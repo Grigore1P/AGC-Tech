@@ -3,16 +3,20 @@ import React from 'react';
 const FooterComponent = () => {
     return (
         <div className="main bg-[#EEF8F]">
-            <footer className="w-full absolute bottom-0 bg-gradient-to-r from-indigo-bg-[#0052D] to-purple-bg-[#57033F] text-white p-10 sm:p-0">
-                <div className="w-85 mx-auto flex flex-wrap items-start justify-between">
-                    <div className="flex-basis-25 p-4 sm:flex-basis-15">
-                        <img className="w-80 mb-10" src="https://www.edigitalagency.com.au/wp-content/uploads/Twitter-logo-png.png" alt="Logo" />
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt modi qui ducimus iusto odit provident vitae possimus maxime harum minima animi tenetur magnam nihil laborum temporibus eius a, impedit dolore.
+            <footer className="w-full absolute bottom-0 bg-gradient-to-r from-[#00052D] to-[#57033F] text-white p-10 sm:p-0">
+                <div className="row w-50 mx-auto flex flex-wrap items-start justify-between">
+                    <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-32 mt-20">
+                        <img className="w-20 mb-10" src="https://www.edigitalagency.com.au/wp-content/uploads/Twitter-logo-png.png" alt="Logo" />
+                        <p className="mr-20">
+                            Lorem ipsum dolor sit amet consectetur adipisicing<br/>
+                            elit. Nesciunt modi qui ducimus iusto odit provident<br />
+                            vitae possimus maxime harum minima animi tenetur<br />
+                            magnam nihil laborum temporibus eius a, impedit<br />
+                            dolore.
                         </p>
                     </div>
-                    <div className="flex-basis-25 p-4 sm:flex-basis-15">
-                        <h3 className="mb-10 relative">
+                    <div className="contact flex-basis-25 p-4 mt-28 ml-[-100px]">
+                        <h3 className="mb-10 relative font-bold">
                             Contact Us
                             <div className="underline"><span></span></div>
                         </h3>
@@ -22,14 +26,14 @@ const FooterComponent = () => {
                         <p className="email-id">popovicigrigore777@gmail.com</p>
                         <h4>+373 - 0123456789</h4>
                     </div>
-                    <div className="flex-basis-25 p-4 sm:flex-basis-15">
+                    <div className="links flex-basis-25 p-4 ml-[-80px] mt-28">
                         <div className="align">
-                            <h3 className="relative">
+                            <h3 className="relative font-bold">
                                 Links
                                 <div className="underline"><span></span></div>
                             </h3>
                         </div>
-                        <ul>
+                        <ul className="mt-8">
                             <li><a href="agctech/src/components" className="text-white">Home</a></li>
                             <li><a href="agctech/src/components" className="text-white">Services</a></li>
                             <li><a href="agctech/src/components" className="text-white">About Us</a></li>
@@ -37,14 +41,14 @@ const FooterComponent = () => {
                             <li><a href="agctech/src/components" className="text-white">Contacts</a></li>
                         </ul>
                     </div>
-                    <div className="flex-basis-25 p-4 sm:flex-basis-15">
-                        <h3 className="relative">
+                    <div className="info-desk flex-basis-25 p-4 mr-20 mt-28">
+                        <h3 className="relative ml-4">
                             Info Desk
-                            <div className="underline"><span></span></div>
+                            <div className=""><span></span></div>
                         </h3>
                         <form className="pb-10 flex items-center justify-between border-b border-gray-300 mb-5">
                             <i className="far fa-envelope text-gray-400 text-2xl mr-4"></i>
-                            <input type="email" placeholder="Enter your email id" className="w-full bg-transparent text-gray-400 border-0 outline-none" required />
+                            <input type="email" placeholder="Enter your email id" className="w-full bg-transparent text-gray-400 border-0 outline-none mr-16" required />
                             <button type="submit" className="bg-transparent border-0 outline-none cursor-pointer">
                                 <i className="fas fa-arrow-right text-gray-400 text-2xl"></i>
                             </button>
@@ -57,9 +61,9 @@ const FooterComponent = () => {
                         </div>
                     </div>
                 </div>
+                <hr className="w-[1400px] border-0 border-b border-gray-300 mx-auto my-10" />
+                <p className="text-center mb-20">AGC Tech © 2023 - All Rights Reserved</p>
             </footer>
-            <hr className="w-90 border-0 border-b border-gray-300 mx-auto my-10" />
-            <p className="text-center">AGC Tech © 2023 - All Rights Reserved</p>
         </div>
     );
 };
