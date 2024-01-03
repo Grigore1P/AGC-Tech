@@ -1,12 +1,13 @@
 import React from 'react';
 import FooterComponent from "./components/FooterComponent/FooterComponent";
+import StartSectionComponent from "./components/StartSectionComponent/StartSectionComponent";
 
 function App() {
   return (
-      <div className="AGC">
-          <h1>Muie</h1>
-          <FooterComponent/>
-      </div>
+    <div className="AGC">
+        <FooterComponent />
+        <StartSectionComponent />
+    </div>
   );
 }
 
