@@ -2,8 +2,16 @@ import React from 'react';
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import Carousel from "./components/carusel.component";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
+import StartSectionComponent from "./components/StartSectionComponent/StartSectionComponent";
+import LearnITComponent from "./components/LearnITComponent/LearnITComponent";
 
 function App() {
+  return (
+      <div className="AGC">
+          <HeaderComponent />
+          <StartSectionComponent />
+          <LearnITComponent />
+          <FooterComponent/>
     let slides = [
         "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
         "https://wallpapercave.com/wp/wp3386769.jpg",
@@ -21,7 +29,6 @@ function App() {
             <FooterComponent/>
         </div>
     );
-
 }
 
 export default App;

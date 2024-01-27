@@ -5,7 +5,7 @@ const FooterComponent = () => {
         <div className="main min-h-screen bg-[#EEF8F] relative flex flex-col">
             <footer className="w-full absolute bottom-0 bg-gradient-to-r from-[#00052D] to-[#57033F] text-white p-10 sm:p-0">
                 <div className="row w-50 mx-auto flex flex-wrap items-start justify-between">
-                    <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-32 mt-20">
+                    <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-32 mt-10">
                         <img className="w-20 mb-10" src="https://www.edigitalagency.com.au/wp-content/uploads/Twitter-logo-png.png" alt="Logo" />
                         <p className="mr-20">
                             Lorem ipsum dolor sit amet consectetur adipisicing<br/>
@@ -15,7 +15,7 @@ const FooterComponent = () => {
                             dolore.
                         </p>
                     </div>
-                    <div className="contact flex-basis-25 p-4 mt-28 ml-[-100px]">
+                    <div className="contact flex-basis-25 p-4 mt-16 ml-[-100px]">
                         <h3 className="mb-10 relative font-bold">
                             Contact Us
                             <div className="underline"><span></span></div>
@@ -26,7 +26,7 @@ const FooterComponent = () => {
                         <p className="email-id mt-4">popovicigrigore777@gmail.com</p>
                         <h4 className="mt-4">+373 - 0123456789</h4>
                     </div>
-                    <div className="links flex-basis-25 p-4 ml-[-80px] mt-28">
+                    <div className="links flex-basis-25 p-4 ml-[-80px] mt-16">
                         <div className="align">
                             <h3 className="relative font-bold">
                                 Links
