@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
-import Carousel from "./components/carusel.component";
+import Carousel from "./components/CarouselComponent/CarouselComponent";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
 import StartSectionComponent from "./components/StartSectionComponent/StartSectionComponent";
 import LearnITComponent from "./components/LearnITComponent/LearnITComponent";
