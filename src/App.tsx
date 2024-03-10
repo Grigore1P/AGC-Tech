@@ -5,6 +5,7 @@ import FooterComponent from "./components/FooterComponent/FooterComponent";
 import StartSectionComponent from "./components/StartSectionComponent/StartSectionComponent";
 import LearnITComponent from "./components/LearnITComponent/LearnITComponent";
 import ScopComponent from "./components/ScopComponent/ScopComponent";
+import ReviewsComponent from "./components/ReviewsComponent/ReviewsComponent";
 function App() {
     let slides = [
         "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
@@ -24,6 +25,7 @@ function App() {
                 </div>
             </div>
             <ScopComponent/>
+            <ReviewsComponent />
             <FooterComponent/>
 
         </div>
