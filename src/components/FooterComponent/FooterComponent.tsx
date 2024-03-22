@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FooterComponent = () => {
+    const [email, setEmail] = useState('');
+    const [rating, setRating] = useState(0);
+    const [message, setMessage] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleRatingChange = (e) => {
+        setRating(parseInt(e.target.value));
+    };
+
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Here you can send the email, rating, and message to your backend or handle it as needed
+        console.log(`Email: ${email}, Rating: ${rating}, Message: ${message}`);
+        // Reset the form
+        setEmail('');
+        setRating(0);
+        setMessage('');
+        setSubmitted(true);
+    };
+
     return (
         <div className="main bg-[#EEF8F]">
             <footer className="w-full absolute bottom-0 bg-gradient-to-r from-[#00052D] to-[#57033F] text-white p-10 sm:p-0">
@@ -35,29 +63,37 @@ const FooterComponent = () => {
                         </div>
                         <ul className="mt-8">
                             <li><a href="agctech/src/components" className="text-white">Home</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Services</a></li>
+                            <li><a href="agctech/src/components" className="text-white">Courses</a></li>
                             <li><a href="agctech/src/components" className="text-white">About Us</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Features</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Contacts</a></li>
+                            <li><a href="agctech/src/components" className="text-white">Log In</a></li>
+                            <li><a href="agctech/src/components" className="text-white">Contact Us</a></li>
                         </ul>
                     </div>
-                    <div className="info-desk flex-basis-25 p-4 mr-20 mt-28">
-                        <h3 className="relative ml-4">
-                            Info Desk
-                            <div className=""><span></span></div>
-                        </h3>
-                            <i className="far fa-envelope text-gray-400 text-2xl mr-4"></i>
-                            <input type="email" placeholder="Enter your email id" className="w-full bg-transparent text-gray-400 border-0 outline-none mr-16" required />
-                            <button type="submit" className="bg-transparent border-0 outline-none cursor-pointer">
-                                <i className="fas fa-arrow-right text-gray-400 text-2xl"></i>
-                            </button>
-                        <hr className="w-36 ml-4"></hr>
-                        <div className="social-icons">
-                            <i className="fab fa-facebook-f text-2xl w-16 h-16 rounded-full text-center leading-16 text-black bg-white mr-5 cursor-pointer"></i>
-                            <i className="fab fa-instagram text-2xl w-16 h-16 rounded-full text-center leading-16 text-black bg-white mr-5 cursor-pointer"></i>
-                            <i className="fab fa-telegram text-2xl w-16 h-16 rounded-full text-center leading-16 text-black bg-white mr-5 cursor-pointer"></i>
-                            <i className="fab fa-viber text-2xl w-16 h-16 rounded-full text-center leading-16 text-black bg-white cursor-pointer"></i>
-                        </div>
+                    <div className="leaveReview flex-basis-25 p-4 mr-40 mt-28">
+                        <h3 className="relative ml-4 font-bold font-sans">Leave a Review</h3>
+                        {submitted ? (
+                            <p className="text-gray-400 mt-4">Thank you for your review!</p>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="flex items-center flex-col">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email id"
+                                    className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none my-4 p-2"
+                                    required
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                />
+                                <textarea
+                                    placeholder="Enter your message"
+                                    className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none p-2"
+                                    value={message}
+                                    onChange={handleMessageChange}
+                                ></textarea>
+                                <button type="submit" className="bg-[#57033F] text-white py-2 px-4 mt-4 rounded hover:bg-[#45012B]">
+                                    Submit
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
                 <hr className="w-[1400px] border-0 border-b border-gray-300 mx-auto my-10" />
