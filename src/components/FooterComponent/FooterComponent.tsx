@@ -2,32 +2,10 @@ import React, { useState } from 'react';
 
 const FooterComponent = () => {
     const [email, setEmail] = useState('');
-    const [rating, setRating] = useState(0);
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
 
-    const handleRatingChange = (e) => {
-        setRating(parseInt(e.target.value));
-    };
-
-    const handleMessageChange = (e) => {
-        setMessage(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here you can send the email, rating, and message to your backend or handle it as needed
-        console.log(`Email: ${email}, Rating: ${rating}, Message: ${message}`);
-        // Reset the form
-        setEmail('');
-        setRating(0);
-        setMessage('');
-        setSubmitted(true);
-    };
 
     return (
         <div className="main min-h-screen bg-[#EEF8F] relative flex flex-col">
@@ -74,20 +52,18 @@ const FooterComponent = () => {
                         {submitted ? (
                             <p className="text-gray-400 mt-4">Thank you for your review!</p>
                         ) : (
-                            <form onSubmit={handleSubmit} className="flex items-center flex-col">
+                            <form  className="flex items-center flex-col">
                                 <input
                                     type="email"
                                     placeholder="Enter your email id"
                                     className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none my-4 p-2"
                                     required
                                     value={email}
-                                    onChange={handleEmailChange}
                                 />
                                 <textarea
                                     placeholder="Enter your message"
                                     className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none p-2"
                                     value={message}
-                                    onChange={handleMessageChange}
                                 ></textarea>
                                 <button type="submit" className="bg-[#57033F] text-white py-2 px-4 mt-4 rounded hover:bg-[#45012B]">
                                     Submit
