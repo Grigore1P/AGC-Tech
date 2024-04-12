@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import Carousel from "./components/CarouselComponent/CarouselComponent";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
@@ -25,10 +25,9 @@ function App() {
             <div className="AGC">
                 <HeaderComponent />
                 <Routes>
-                    <Route path="/about-us" element={<AboutUsComponent />} />
-                </Routes>
-                {!showAboutUs && (
-                    <>
+                    <Route path="/about-us" element={<AboutUsComponent />}/>
+                    <Route path="/" element={
+                        <div>
                         <StartSectionComponent />
                         <LearnITComponent />
                         <div className="main w-full h-30 bg-gradient-to-r from-[#00052D] to-[#57033F]">
@@ -38,8 +37,9 @@ function App() {
                         </div>
                         <ScopComponent/>
                         <ReviewsComponent />
-                    </>
-                )}
+                        </div>
+                    } />
+                        </Routes>
                 <FooterComponent/>
             </div>
         </Router>
