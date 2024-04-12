@@ -141,6 +141,10 @@ const ReviewsComponent = () => {
             <br />
             <br />
             <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     );
 }
