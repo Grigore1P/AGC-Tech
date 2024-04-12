@@ -11,7 +11,7 @@ const AboutUsComponent = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isHovered2, setIsHovered2] = useState(false);
     return (
-        <div className="main bg-black h-[1900px] w-screen">
+        <div className="main bg-black h-fit relative w-screen">
             <div className="noi flex items-center justify-center">
             <h2 className="text-white font-bold font-sans text-2xl mt-[-400px]">Despre Noi</h2>
             <p className="text-gray-400 font-sans text-s mt-[-280px] ml-[-125px]">
@@ -68,8 +68,9 @@ const AboutUsComponent = () => {
             <p className="text-gray-400 font-sans text-s mt-10 ml-[400px]">
                 Profită de o ședință de aproximativ 15-20 minute alături unul din membrii personalului AGC pentru alte întrebări, detalii
             </p>
-
-
+            <br />
+            <br />
+            <br />
         </div>
     )
 }
