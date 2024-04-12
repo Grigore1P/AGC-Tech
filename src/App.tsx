@@ -8,6 +8,7 @@ import LearnITComponent from "./components/LearnITComponent/LearnITComponent";
 import ScopComponent from "./components/ScopComponent/ScopComponent";
 import ReviewsComponent from "./components/ReviewsComponent/ReviewsComponent";
 import AboutUsComponent from "./components/AboutUsComponent/AboutUsComponent";
+import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                 <HeaderComponent />
                 <Routes>
                     <Route path="/about-us" element={<AboutUsComponent />}/>
+                    <Route path="/courses" element={<CoursesPage />}/>
                     <Route path="/" element={
                         <div>
                         <StartSectionComponent />

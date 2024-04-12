@@ -8,7 +8,7 @@ const FooterComponent = () => {
 
 
     return (
-        <div className="main min-h-screen bg-[#EEF8F] relative flex flex-col">
+        <div className="main min-h-screen bg-[#EEF8F] relative mt-[-160px] flex flex-col">
             <footer className="w-full absolute bottom-0 bg-gradient-to-r from-[#00052D] to-[#57033F] text-white p-10 sm:p-0">
                 <div className="row w-50 mx-auto flex flex-wrap items-start justify-between">
                     <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-32 mt-10">
