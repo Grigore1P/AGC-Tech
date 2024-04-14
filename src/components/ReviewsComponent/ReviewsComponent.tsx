@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiFillStar } from 'react-icons/ai'; // Assuming you're using react-icons for icons
+import { AiFillStar } from 'react-icons/ai';
 import review1 from './review1.jpg';
 import review2 from './review2.jpg';
 import review3 from './review3.jpg';

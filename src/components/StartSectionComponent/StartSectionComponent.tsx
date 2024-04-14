@@ -4,8 +4,8 @@ const StartSectionComponent = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <div className={`w-full h-fit motivation relative mt-[-80px] ${isHovered ? "hovered" : ""}`}>
-            <div className="video-wrapper absolute inset-0 overflow-hidden rounded">
+        <div className={`w-full h-fit motivation border-2 border-[#D20062] relative  ${isHovered ? "hovered" : ""}`}>
+            <div className="video-wrapper absolute inset-0 overflow-hidden ">
                 <video autoPlay loop muted className="object-cover w-full h-full">
                     <source src="https://sebastianbotez.ro/videos/hero-video-programming-20.mp4" type="video/mp4" />
                     <source src="https://sebastianbotez.ro/videos/hero-video-programming-20.webm" type="video/webm" />
@@ -25,7 +25,7 @@ const StartSectionComponent = () => {
                     Intră și explorează acum!
                 </h4>
                 <button
-                    className={`w-32 h-12 text-white rounded-xl mt-10 transition-all ${
+                    className={`w-32 h-12 text-white rounded-xl mt-4 transition-all ${
                         isHovered
                             ? "bg-gradient-to-l from-[#00052D] to-[#57033F]"
                             : "bg-gradient-to-r from-[#00052D] to-[#57033F]"
@@ -36,6 +36,8 @@ const StartSectionComponent = () => {
                     Detalii
                 </button>
             </div>
+            <br />
+            <br />
         </div>
     );
 };
