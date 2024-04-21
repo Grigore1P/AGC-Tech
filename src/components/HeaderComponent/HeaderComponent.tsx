@@ -12,7 +12,7 @@ const HeaderComponent = () => {
                     <Link to="/courses" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">COURSES</Link>
                 </li>
                 <li className="group Header3 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/logo" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">LOGO</Link>
+                    <button className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">LOGO</button>
                 </li>
                 <li className="group Header4 border border-transparent p-2 ml-10 transition-all mt-5">
                     <Link to="/about-us" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">ABOUT US</Link>
