@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import htmlcss1 from './htmlcss1.jpg';
 import javascript from './javascript.png';
 import mysql1 from './mysql1.jpg';
@@ -10,6 +11,12 @@ const CoursesPage = () => {
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
+    };
+
+    const navigate = useNavigate();
+
+    const handleCourseClick = () => {
+        navigate('/hcpage');
     };
     const renderCourses = () => {
         switch (selectedCategory) {
@@ -30,7 +37,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -52,7 +59,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -70,7 +77,7 @@ const CoursesPage = () => {
                         </p>
                     </div>
                     <button
-                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                         cursul
                     </button>
                 </div>
@@ -86,7 +93,7 @@ const CoursesPage = () => {
                         </p>
                     </div>
                     <button
-                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                         cursul
                     </button>
                 </div>
@@ -107,7 +114,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -128,7 +135,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -145,7 +152,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -164,8 +171,7 @@ const CoursesPage = () => {
                                     altele.
                                 </p>
                             </div>
-                            <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4">Vizualizează
+                            <button className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
                                 cursul
                             </button>
                         </div>
