@@ -18,6 +18,7 @@ const CoursesPage = () => {
     const handleCourseClick = () => {
         navigate('/hcpage');
     };
+
     const renderCourses = () => {
         switch (selectedCategory) {
             case "front-end":
@@ -205,25 +206,43 @@ const CoursesPage = () => {
             </div>
 
             <div className="categorii ml-40 mt-10">
-                <button className="all text-gray-400" onClick={() => handleCategoryClick("all")}>Toate</button>
+                <button
+                    className={`text-gray-400 ${selectedCategory === 'all' ? 'text-white' : 'text-gray'}`}
+                    onClick={() => handleCategoryClick("all")}
+                >
+                    Toate
+                </button>
                 /
                 <span className="text-gray-400">/</span>
                 /
-                <button className="frontend text-gray-400" onClick={() => handleCategoryClick("front-end")}>Front-End</button>
+                <button
+                    className={`text-gray-400 ${selectedCategory === 'front-end' ? 'text-white' : ''}`}
+                    onClick={() => handleCategoryClick("front-end")}
+                >
+                    Front-End
+                </button>
                 /
                 <span className="text-gray-400">/</span>
                 /
-                <button className="backend text-gray-400" onClick={() => handleCategoryClick("back-end")}>Back-End</button>
+                <button className={`text-gray-400 ${selectedCategory === 'back-end' ? 'text-white' : ''}`}
+                        onClick={() => handleCategoryClick("back-end")}
+                >
+                    Back-End
+                </button>
                 /
                 <span className="text-gray-400">/</span>
                 /
-                <button className="backend text-gray-400" onClick={() => handleCategoryClick("video-editing")}>Video-Editing</button>
+                <button className={`text-gray-400 ${selectedCategory === 'video-editing' ? 'text-white' : ''}`}
+                    onClick={() => handleCategoryClick("video-editing")}
+                >
+                    Video-Editing
+                </button>
 
             </div>
             <div className="courses grid grid-cols-3 ml-40 mt-20">
                 {renderCourses()}
             </div>
         </div>
-    )
+)
 }
 export default CoursesPage
