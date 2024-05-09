@@ -11,6 +11,7 @@ import AboutUsComponent from "./components/AboutUsComponent/AboutUsComponent";
 import LoginComponent from "./components/LoginComponent/LoginComponent";
 import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
+import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
                     <Route path="/login" element={<LoginComponent />}/>
                     <Route path="/courses" element={<CoursesPage />}/>
                     <Route path="/hcpage" element={<HCPageComponent />} />
+                    <Route path="/jspage" element={<JSPageComponent />} />
+
                     <Route path="/courses" element={<HCPageComponent />} />
                     <Route path="/" element={
                         <div>
