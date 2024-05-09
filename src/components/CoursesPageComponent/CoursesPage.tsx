@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import htmlcss1 from './htmlcss1.jpg';
-import javascript from './javascript.png';
+import javascript from '../JSPageComponent/javascript1.png';
 import mysql1 from './mysql1.jpg';
 import premiere from './premiere.png';
 
@@ -15,8 +15,12 @@ const CoursesPage = () => {
 
     const navigate = useNavigate();
 
-    const handleCourseClick = () => {
+    const handleCourse1Click = () => {
         navigate('/hcpage');
+    };
+
+    const handleCourse2Click = () => {
+        navigate('/jspage');
     };
 
     const renderCourses = () => {
@@ -38,7 +42,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -60,7 +64,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse2Click}> Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -72,13 +76,13 @@ const CoursesPage = () => {
                     <img className="w-[55px] h-[55px] ml-[230px] mt-[-30px] rounded-full" src={mysql1} alt=""/>
                     <div className="about mt-[-30px]">
                         <h3 className="text-[#891652] font-bold">Coming soon</h3>
-                        <p className="text-[#C7C8CC] mt-4">Introducere in bazele de date. Utilizare acestuia pentru
-                            stocarea și gestionarea datelor
-                            într-un mod structurat, permițând accesul rapid și eficient la informații.
+                        <p className="text-[#C7C8CC] mt-4">
+                            JavaScript este un limbaj de programare fundamental pentru dezvoltarea paginilor web interactive.
+                            Împreună cu HTML și CSS, JavaScript completează triada esențială a dezvoltării web front-end.
                         </p>
                     </div>
                     <button
-                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                         cursul
                     </button>
                 </div>
@@ -94,7 +98,7 @@ const CoursesPage = () => {
                         </p>
                     </div>
                     <button
-                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                         cursul
                     </button>
                 </div>
@@ -115,7 +119,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -136,7 +140,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse2Click}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -153,7 +157,7 @@ const CoursesPage = () => {
                                 </p>
                             </div>
                             <button
-                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                                className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                                 cursul
                             </button>
                         </div>
@@ -172,7 +176,7 @@ const CoursesPage = () => {
                                     altele.
                                 </p>
                             </div>
-                            <button className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourseClick}>Vizualizează
+                            <button className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
                                 cursul
                             </button>
                         </div>
