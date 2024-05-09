@@ -12,6 +12,7 @@ import LoginComponent from "./components/LoginComponent/LoginComponent";
 import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
 import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
+import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/courses" element={<CoursesPage />}/>
                     <Route path="/hcpage" element={<HCPageComponent />} />
                     <Route path="/jspage" element={<JSPageComponent />} />
+                    <Route path="/sqlpage" element={<SQLPageComponent />} />
 
                     <Route path="/courses" element={<HCPageComponent />} />
                     <Route path="/" element={
