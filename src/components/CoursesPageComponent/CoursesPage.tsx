@@ -27,6 +27,10 @@ const CoursesPage = () => {
         navigate('/sqlpage');
     };
 
+    const handleCourse4Click = () => {
+        navigate('/premierepage');
+    };
+
     const renderCourses = () => {
         switch (selectedCategory) {
             case "front-end":
@@ -102,7 +106,7 @@ const CoursesPage = () => {
                         </p>
                     </div>
                     <button
-                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
+                        className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse4Click}>Vizualizează
                         cursul
                     </button>
                 </div>
@@ -180,7 +184,7 @@ const CoursesPage = () => {
                                     altele.
                                 </p>
                             </div>
-                            <button className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse1Click}>Vizualizează
+                            <button className="border-1 border-white text-[#891652] font-sans hover:text-[#FC819E] transition-all mt-4" onClick={handleCourse4Click}>Vizualizează
                                 cursul
                             </button>
                         </div>

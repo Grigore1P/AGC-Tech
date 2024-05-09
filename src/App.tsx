@@ -13,6 +13,7 @@ import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
 import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
 import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
+import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                     <Route path="/hcpage" element={<HCPageComponent />} />
                     <Route path="/jspage" element={<JSPageComponent />} />
                     <Route path="/sqlpage" element={<SQLPageComponent />} />
+                    <Route path="/premierepage" element={<PremierePageComponent />} />
 
                     <Route path="/courses" element={<HCPageComponent />} />
                     <Route path="/" element={
