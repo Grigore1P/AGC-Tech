@@ -1,18 +1,40 @@
 {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "parser": "@babel/eslint-parser",
-        "requireConfigFile": false,
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
     "env": {
-        "es6": true,
         "browser": true,
+        "es2021": true,
         "node": true
     },
-    "rules": {
-        "require-jsdoc" : 0
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
     },
-    "extends": ["eslint:recommended", "google"]
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": ["error", {
+            "singleQuote": true,
+            "printWidth": 80
+        }],
+        "quotes": ["error", "single"],
+        "max-len": ["error", { "code": 80 }],
+        "no-unused-vars": ["warn"]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
 }

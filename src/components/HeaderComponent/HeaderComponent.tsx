@@ -1,28 +1,69 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase/firebaseConfig";
+import { signOut } from "firebase/auth";
 
-const HeaderComponent = () => {
-    return (
-        <div className="Header h-20 w-full bg-gradient-to-r from-[#00052D] to-[#57003F] text-white text-2xl ">
-            <ul className="flex items-center justify-center space-x-20 relative">
-                <li className="group Header1 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">HOME</Link>
-                </li>
-                <li className="group Header2 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/courses" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">COURSES</Link>
-                </li>
-                <li className="group Header3 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/logo" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">LOGO</Link>
-                </li>
-                <li className="group Header4 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/about-us" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">ABOUT US</Link>
-                </li>
-                <li className="group Header5 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <Link to="/login" className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">LOG IN</Link>
-                </li>
-            </ul>
+const HeaderComponent: React.FC<{ user?: any }> = ({ user }) => {
+  const [authUser, loading, error] = useAuthState(auth);
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error);
+      });
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  return (
+    <header className="bg-gray-800 text-white">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <div className="text-xl font-bold">
+          <Link to="/">AGC Tech</Link>
         </div>
-    );
-}
+        <nav className="flex space-x-4">
+          <Link to="/" className="hover:text-gray-400">
+            Home
+          </Link>
+          <Link to="/about-us" className="hover:text-gray-400">
+            About Us
+          </Link>
+          <Link to="/courses" className="hover:text-gray-400">
+            Courses
+          </Link>
+          {authUser ? (
+            <>
+              <span className="hover:text-gray-400">
+                Welcome, {authUser.email}
+              </span>
+              <button onClick={handleLogout} className="hover:text-gray-400">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="hover:text-gray-400">
+                Login
+              </Link>
+              <Link to="/register" className="hover:text-gray-400">
+                Register
+              </Link>
+            </>
+          )}
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default HeaderComponent;
