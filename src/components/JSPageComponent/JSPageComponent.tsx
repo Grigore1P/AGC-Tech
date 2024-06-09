@@ -3,7 +3,7 @@ import htmlcss1 from "../CoursesPageComponent/htmlcss1.jpg";
 import { useNavigate } from "react-router-dom";
 import { CgAdd } from "react-icons/cg";
 import bg from '../HCPageComponent/bg.png';
-import javascript1 from '../JSPageComponent/javascript1.png';
+import javascript1 from './javascript1.png';
 
 const JSPageComponent = () => {
     const [selectedCategory, setSelectedCategory] = useState("all");
