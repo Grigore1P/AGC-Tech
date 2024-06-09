@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
+interface HeaderComponentProps {
+    user: any; // You can replace 'any' with a more specific type if you know it
+}
 
-const HeaderComponent = () => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ user }) => {
     const [authUser, loading, error] = useAuthState(auth);
 
     const handleLogout = () => {
