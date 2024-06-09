@@ -78,6 +78,11 @@ const FooterComponent = () => {
                   <a href="#" className="text-white">Log In</a>
                 </button>
               </li>
+              <li>
+                <button onClick={() => handleCategoryCourseClick("/register")}>
+                  <a href="#" className="text-white">Register</a>
+                </button>
+              </li>
             </ul>
           </div>
           <div className="leaveReview flex-basis-25 p-4 mr-40 mt-28">
