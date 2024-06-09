@@ -212,7 +212,7 @@ const CoursesPage = () => {
                 </div>
 
                 <div className="w-[150px] h-[80px] bg-[#F27BBD] rounded-3xl ml-[-127px]">
-                    <h3 className="text-white font-sans flex justify-center items-center mt-6">captivitate &
+                    <h3 className="text-white font-sans flex justify-center items-center mt-6">fascinație &
                         calitate </h3>
                 </div>
             </div>
