@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import Carousel from "./components/CarouselComponent/CarouselComponent";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
@@ -12,11 +12,10 @@ import LoginComponent from "./components/LoginComponent/LoginComponent";
 import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
 import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
-
+import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
+import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
 
 function App() {
-    const [showAboutUs, setShowAboutUs] = useState(false);
-
     let slides = [
         "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
         "https://wallpapercave.com/wp/wp3386769.jpg",
@@ -29,28 +28,29 @@ function App() {
             <div className="AGC">
                 <HeaderComponent />
                 <Routes>
-                    <Route path="/about-us" element={<AboutUsComponent />}/>
-                    <Route path="/login" element={<LoginComponent />}/>
-                    <Route path="/courses" element={<CoursesPage />}/>
+                    <Route path="/about-us" element={<AboutUsComponent />} />
+                    <Route path="/login" element={<LoginComponent />} />
+                    <Route path="/courses" element={<CoursesPage />} />
                     <Route path="/hcpage" element={<HCPageComponent />} />
                     <Route path="/jspage" element={<JSPageComponent />} />
-
-                    <Route path="/courses" element={<HCPageComponent />} />
+                    <Route path="/sqlpage" element={<SQLPageComponent />} />
+                    <Route path="/premierepage" element={<PremierePageComponent />} />
+                    <Route path="/contactus" element={<PremierePageComponent />} />
                     <Route path="/" element={
                         <div>
-                        <StartSectionComponent />
-                        <LearnITComponent />
-                        <div className="main w-full h-30 bg-gradient-to-r from-[#00052D] to-[#57033F]">
-                            <div className="carousel-container mx-auto my-auto w-2/4 border-2 rounded-md ">
-                                <Carousel slides={slides} />
+                            <StartSectionComponent />
+                            <LearnITComponent />
+                            <div className="main w-full h-30 bg-gradient-to-r from-[#00052D] to-[#57033F]">
+                                <div className="carousel-container mx-auto my-auto w-2/4 border-2 rounded-md ">
+                                    <Carousel slides={slides} />
+                                </div>
                             </div>
-                        </div>
-                        <ScopComponent/>
-                        <ReviewsComponent />
+                            <ScopComponent />
+                            <ReviewsComponent />
                         </div>
                     } />
-                        </Routes>
-                <FooterComponent/>
+                </Routes>
+                <FooterComponent />
             </div>
         </Router>
     );

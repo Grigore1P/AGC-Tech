@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const FooterComponent = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState("all");
+    const navigate = useNavigate();
 
+    const handleCategoryClick = (category: string) => {
+        setSelectedCategory(category);
+    };
 
+    const handleCategoryCourseClick = (path: string) => {
+        navigate(path);
+    };
 
     return (
         <div className="main min-h-screen bg-[#EEF8F] relative mt-[-160px] flex flex-col">
@@ -40,11 +49,26 @@ const FooterComponent = () => {
                             </h3>
                         </div>
                         <ul className="mt-8">
-                            <li><a href="agctech/src/components" className="text-white">Home</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Courses</a></li>
-                            <li><a href="agctech/src/components" className="text-white">About Us</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Log In</a></li>
-                            <li><a href="agctech/src/components" className="text-white">Contact Us</a></li>
+                            <li>
+                                <button onClick={() => handleCategoryCourseClick("/")}>
+                                    <a href="#" className="text-white">Home</a>
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleCategoryCourseClick("/courses")}>
+                                    <a href="#" className="text-white">Courses</a>
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleCategoryCourseClick("/about-us")}>
+                                    <a href="#" className="text-white">About Us</a>
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleCategoryCourseClick("/login")}>
+                                    <a href="#" className="text-white">Log In</a>
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <div className="leaveReview flex-basis-25 p-4 mr-40 mt-28">
@@ -52,18 +76,20 @@ const FooterComponent = () => {
                         {submitted ? (
                             <p className="text-gray-400 mt-4">Thank you for your review!</p>
                         ) : (
-                            <form  className="flex items-center flex-col">
+                            <form className="flex items-center flex-col">
                                 <input
                                     type="email"
                                     placeholder="Enter your email id"
                                     className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none my-4 p-2"
                                     required
                                     value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <textarea
                                     placeholder="Enter your message"
                                     className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none p-2"
                                     value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                 ></textarea>
                                 <button type="submit" className="bg-[#57033F] text-white py-2 px-4 mt-4 rounded hover:bg-[#45012B]">
                                     Submit
