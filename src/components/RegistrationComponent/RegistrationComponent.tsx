@@ -10,6 +10,7 @@ const RegisterComponent: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
@@ -29,36 +30,44 @@ const RegisterComponent: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Register</h2>
+    <div className="flex justify-center items-center h-screen bg-black">
+      <div className="bg-[#222831] p-8 rounded shadow-md w-full max-w-md">
+        <h2 className="text-2xl text-white font-bold mb-4">Înregistrează-te</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
+        <h5 className=" mt-[10px] w-40 text-[#686D76]">Email</h5>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@example.com"
+            className="w-full p-2 border bg-[#373A40] border-[#57033F] rounded mb-4 mt-2"
+        />
+        <h5 className="w-40 text-[#686D76]">Parola</h5>
+        <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Parola"
+            className="w-full p-2 bg-[#373A40] border border-[#57033F] rounded mb-4 mt-2"
         />
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="w-full p-2 border border-gray-300 rounded mb-4"
-        />
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirmă parola"
+            className="w-full p-2 bg-[#373A40] border border-[#57033F] rounded mb-4"
         />
         <button
-          onClick={handleRegister}
-          className="w-full bg-blue-500 text-white p-2 rounded"
+            onClick={handleRegister}
+            className={`p-2 w-32 h-12 rounded-xl ml-32 bg-[#57033F] text-[#F3D7CA] mt-2 ${
+                isHovered
+                    ? "bg-gradient-to-l from-[#00052D] to-[#57033F]"
+                    : "bg-gradient-to-r from-[#00052D] to-[#57033F]"
+            }`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
-          Register
+          Intră
         </button>
       </div>
     </div>

@@ -42,6 +42,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="about-us" element={<AboutUsComponent /> } />
           <Route path="login" element={<LoginComponent />} />
+          <Route path="/register" element={<RegisterComponent />} />
           <Route path="courses" element={<CoursesPage />} />
           <Route path="hcpage" element={<HCPageComponent /> } />
           <Route path="jspage" element={<JSPageComponent />} />
