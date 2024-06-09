@@ -10,6 +10,10 @@ import ReviewsComponent from "./components/ReviewsComponent/ReviewsComponent";
 import AboutUsComponent from "./components/AboutUsComponent/AboutUsComponent";
 import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import LoginComponent from "./components/LoginComponent/LoginComponent";
+import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
+import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
+import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
+import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
 import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent"; // Import the Register Component
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig"; // Adjust the path if needed
@@ -36,8 +40,14 @@ const App: React.FC = () => {
       <div className="App">
         <HeaderComponent user={user} />
         <Routes>
-          <Route path="/about-us" element={<AboutUsComponent />} />
-          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="about-us" element={<AboutUsComponent /> } />
+          <Route path="login" element={<LoginComponent />} />
+          <Route path="courses" element={<CoursesPage />} />
+          <Route path="hcpage" element={<HCPageComponent /> } />
+          <Route path="jspage" element={<JSPageComponent />} />
+          <Route path="sqlpage" element={<SQLPageComponent /> } />
+          <Route path="premierepage" element={<PremierePageComponent /> } />
+          <Route path="contactus" element={<PremierePageComponent />} />
           <Route
             path="/"
             element={
