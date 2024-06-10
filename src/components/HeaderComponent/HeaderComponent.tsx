@@ -12,17 +12,15 @@ interface HeaderComponentProps {
 
 const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, setIsLoggedIn }) => {
     const [authUser, loading, error] = useAuthState(auth);
-
     const handleLogout = () => {
         signOut(auth)
             .then(() => {
-                setIsLoggedIn(false);
+                // Sign-out successful.
             })
             .catch((error) => {
                 console.error('Error signing out: ', error);
             });
     };
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -34,46 +32,46 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, set
     return (
         <div className="Header h-20 w-full bg-gradient-to-r from-[#00052D] to-[#57003F] text-white text-2xl">
             <ul className="flex items-center justify-center space-x-20 relative">
-                <li className="group Header1 border border-transparent p-2 ml-10 transition-all mt-5">
+                <li className="group relative inline-block">
                     <Link
                         to="/"
-                        className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                        className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                     >
                         HOME
                     </Link>
                 </li>
-                <li className="group Header2 border border-transparent p-2 ml-10 transition-all mt-5">
+                <li className="group relative inline-block">
                     <Link
                         to="/courses"
-                        className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                        className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                     >
                         COURSES
                     </Link>
                 </li>
-                <li className="group Header3 border border-transparent p-2 ml-10 transition-all mt-5">
-                    <button className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">
+                <li className="group relative inline-block">
+                    <button className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]">
                         LOGO
                     </button>
                 </li>
-                <li className="group Header4 border border-transparent p-2 ml-10 transition-all mt-5">
+                <li className="group relative inline-block">
                     <Link
                         to="/about-us"
-                        className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                        className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                     >
                         ABOUT US
                     </Link>
                 </li>
                 {authUser && isLoggedIn ? (
                     <>
-                        <li className="group Header5 border border-transparent p-2 ml-10 transition-all mt-5">
-                            <span className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">
+                        <li className="group relative inline-block">
+                            <span className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]">
                                 Welcome, {authUser.displayName}
                             </span>
                         </li>
-                        <li className="group Header6 border border-transparent p-2 ml-10 transition-all mt-5">
+                        <li className="group relative inline-block">
                             <button
                                 onClick={handleLogout}
-                                className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                                className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                             >
                                 Logout
                             </button>
@@ -81,18 +79,18 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, set
                     </>
                 ) : (
                     <>
-                        <li className="group Header5 border border-transparent p-2 ml-10 transition-all mt-5">
+                        <li className="group relative inline-block">
                             <Link
                                 to="/login"
-                                className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                                className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                             >
                                 LOG IN
                             </Link>
                         </li>
-                        <li className="group Header6 border border-transparent p-2 ml-10 transition-all mt-5">
+                        <li className="group relative inline-block">
                             <Link
                                 to="/register"
-                                className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2"
+                                className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                             >
                                 REGISTER
                             </Link>
