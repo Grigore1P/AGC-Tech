@@ -20,6 +20,7 @@ import { auth } from "./firebase/firebaseConfig"; // Adjust the path if needed
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -38,12 +39,14 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
-        <HeaderComponent user={user} />
+        <HeaderComponent user={null} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path="about-us" element={<AboutUsComponent /> } />
-          <Route path="login" element={<LoginComponent />} />
+          <Route path="/login" element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/register" element={<RegisterComponent />} />
+          <Route path="/register" element={<HCPageComponent />} />
           <Route path="courses" element={<CoursesPage />} />
+          <Route path="courses" element={<AboutUsComponent />} />
           <Route path="hcpage" element={<HCPageComponent /> } />
           <Route path="jspage" element={<JSPageComponent />} />
           <Route path="sqlpage" element={<SQLPageComponent /> } />
@@ -65,7 +68,7 @@ const App: React.FC = () => {
               </div>
             }
           />
-          <Route path="/login" element={<LoginComponent />} />
+          <Route path="/login" element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/register" element={<RegisterComponent />} />{" "}
           {/* Add the register route */}
         </Routes>
