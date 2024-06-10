@@ -10,9 +10,9 @@ import ReviewsComponent from "./components/ReviewsComponent/ReviewsComponent";
 import AboutUsComponent from "./components/AboutUsComponent/AboutUsComponent";
 import CoursesPage from "./components/CoursesPageComponent/CoursesPage";
 import LoginComponent from "./components/LoginComponent/LoginComponent";
-import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent"; // Import the Register Component
+import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase/firebaseConfig"; // Adjust the path if needed
+import { auth } from "./firebase/firebaseConfig";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -32,35 +32,42 @@ const App: React.FC = () => {
   ];
 
   return (
-    <Router>
-      <div className="App">
-        <HeaderComponent user={user} />
-        <Routes>
-          <Route path="/about-us" element={<AboutUsComponent />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route
-            path="/"
-            element={
-              <div>
-                <StartSectionComponent />
-                <LearnITComponent />
-                <div className="main w-full h-30 bg-gradient-to-r from-[#00052D] to-[#57033F]">
-                  <div className="carousel-container mx-auto my-auto w-2/4 border-2 rounded-md">
-                    <Carousel slides={slides} />
+      <Router>
+        <div className="App">
+          <HeaderComponent user={user} />
+          <Routes>
+            <Route path="/about-us" element={<AboutUsComponent />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route
+                path="/"
+                element={
+                  <div className="m-0 p-0">
+                    <div className="relative w-full m-0 p-0">
+                      <StartSectionComponent />
+                    </div>
+                    <div className="relative w-full m-0 p-0">
+                      <LearnITComponent />
+                    </div>
+                    <div className="relative w-full bg-gradient-to-r from-[#00052D] to-[#57033F] m-0 p-0">
+                      <div className="carousel-container mx-auto my-auto w-2/4 border-2 rounded-md">
+                        <Carousel slides={slides} />
+                      </div>
+                    </div>
+                    <div className="relative w-full m-0 p-0">
+                      <ScopComponent />
+                    </div>
+                    <div className="relative w-full m-0 p-0">
+                      <ReviewsComponent />
+                    </div>
                   </div>
-                </div>
-                <ScopComponent />
-                <ReviewsComponent />
-              </div>
-            }
-          />
-          <Route path="/login" element={<LoginComponent />} />
-          <Route path="/register" element={<RegisterComponent />} />{" "}
-          {/* Add the register route */}
-        </Routes>
-        <FooterComponent />
-      </div>
-    </Router>
+                }
+            />
+            <Route path="/login" element={<LoginComponent />} />
+            <Route path="/register" element={<RegisterComponent />} />
+          </Routes>
+          <FooterComponent />
+        </div>
+      </Router>
   );
 };
 
