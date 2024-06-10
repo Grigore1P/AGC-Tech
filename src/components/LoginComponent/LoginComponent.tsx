@@ -4,7 +4,11 @@ import { auth } from '../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import login from '../LoginComponent/login.jpg';
 
-const LoginComponent: React.FC = () => {
+interface LoginComponentProps {
+    setIsLoggedIn: (isLoggedIn: boolean) => void;
+}
+
+const LoginComponent: React.FC<LoginComponentProps> = ({ setIsLoggedIn }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -14,6 +18,7 @@ const LoginComponent: React.FC = () => {
     const handleLogin = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            setIsLoggedIn(true);
             setRedirect(true);
         } catch (error: any) {
             setError(error.message);

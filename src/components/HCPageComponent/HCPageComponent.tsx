@@ -17,6 +17,10 @@
             navigate('/courses');
         };
 
+        const handleAccessCourseClick = (category: string) => {
+            navigate('/register');
+        };
+
         return (
             <div className="main bg-black h-[1100px] relative w-screen">
                 <br />
@@ -55,6 +59,7 @@
                             </p>
                         </div>
                         <button
+                            onClick={() => handleAccessCourseClick("register")}
                             className={`w-32 h-12 text-white text-sm rounded-xl mt-4 transition-all ${
                                 isHovered
                                     ? "bg-[#57033F] border-2 border-[#D20062]"
@@ -63,7 +68,7 @@
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                         >
-                            Curând disponibil
+                            Accesează cursul
                         </button>
                         <br />
                         <br />

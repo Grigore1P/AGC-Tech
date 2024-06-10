@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
+
 interface HeaderComponentProps {
     user: any; // You can replace 'any' with a more specific type if you know it
+    isLoggedIn: boolean;
+    setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
-const HeaderComponent: React.FC<HeaderComponentProps> = ({ user }) => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, setIsLoggedIn }) => {
     const [authUser, loading, error] = useAuthState(auth);
 
     const handleLogout = () => {
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
+                setIsLoggedIn(false);
             })
             .catch((error) => {
                 console.error('Error signing out: ', error);
@@ -60,12 +63,12 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ user }) => {
                         ABOUT US
                     </Link>
                 </li>
-                {authUser ? (
+                {authUser && isLoggedIn ? (
                     <>
                         <li className="group Header5 border border-transparent p-2 ml-10 transition-all mt-5">
-              <span className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">
-                Welcome, {authUser.email}
-              </span>
+                            <span className="hover:text-[#FC819E] border-[#891652] hover:border-4 hover:rounded-xl transition-all mt-2">
+                                Welcome, {authUser.displayName}
+                            </span>
                         </li>
                         <li className="group Header6 border border-transparent p-2 ml-10 transition-all mt-5">
                             <button
