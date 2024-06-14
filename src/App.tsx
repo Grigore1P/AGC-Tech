@@ -14,9 +14,9 @@ import HCPageComponent from "./components/HCPageComponent/HCPageComponent";
 import JSPageComponent from "./components/JSPageComponent/JSPageComponent";
 import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
 import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
-import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent"; // Import the Register Component
+import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase/firebaseConfig"; // Adjust the path if needed
+import { auth } from "./firebase/firebaseConfig";
 
 const App: React.FC = () => {
     const [user, setUser] = useState<any>(null);
@@ -25,6 +25,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setIsLoggedIn(!!currentUser);
         });
         return () => unsubscribe();
     }, []);
@@ -39,19 +40,17 @@ const App: React.FC = () => {
     return (
         <Router>
             <div className="App">
-                <HeaderComponent user={null} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                <HeaderComponent user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 <Routes>
-                    <Route path="about-us" element={<AboutUsComponent /> } />
+                    <Route path="/about-us" element={<AboutUsComponent />} />
                     <Route path="/login" element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="/register" element={<RegisterComponent />} />
-                    <Route path="/register" element={<HCPageComponent />} />
-                    <Route path="courses" element={<CoursesPage />} />
-                    <Route path="courses" element={<AboutUsComponent />} />
-                    <Route path="hcpage" element={<HCPageComponent /> } />
-                    <Route path="jspage" element={<JSPageComponent />} />
-                    <Route path="sqlpage" element={<SQLPageComponent /> } />
-                    <Route path="premierepage" element={<PremierePageComponent /> } />
-                    <Route path="contactus" element={<PremierePageComponent />} />
+                    <Route path="/courses" element={<CoursesPage />} />
+                    <Route path="/hcpage" element={<HCPageComponent />} />
+                    <Route path="/jspage" element={<JSPageComponent />} />
+                    <Route path="/sqlpage" element={<SQLPageComponent />} />
+                    <Route path="/premierepage" element={<PremierePageComponent />} />
+                    <Route path="/contactus" element={<PremierePageComponent />} />
                     <Route
                         path="/"
                         element={
@@ -68,9 +67,6 @@ const App: React.FC = () => {
                             </div>
                         }
                     />
-                    <Route path="/login" element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />} />
-                    <Route path="/register" element={<RegisterComponent />} />{" "}
-                    {/* Add the register route */}
                 </Routes>
                 <FooterComponent />
             </div>

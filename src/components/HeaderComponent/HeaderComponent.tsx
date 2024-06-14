@@ -5,22 +5,24 @@ import { auth } from '../../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
 
 interface HeaderComponentProps {
-    user: any; // You can replace 'any' with a more specific type if you know it
+    user: any;
     isLoggedIn: boolean;
     setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, setIsLoggedIn }) => {
     const [authUser, loading, error] = useAuthState(auth);
+
     const handleLogout = () => {
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
+                setIsLoggedIn(false);
             })
             .catch((error) => {
                 console.error('Error signing out: ', error);
             });
     };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -64,14 +66,15 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ user, isLoggedIn, set
                 {authUser && isLoggedIn ? (
                     <>
                         <li className="group relative inline-block">
-                            <span className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]">
+                            <span
+                                className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]">
                                 Welcome, {authUser.displayName}
                             </span>
                         </li>
                         <li className="group relative inline-block">
                             <button
                                 onClick={handleLogout}
-                                className="p-2 ml-10 mt-5 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
+                                className="p-2 ml-10 relative z-10 text-white transition duration-300 ease-in-out transform rounded-lg group-hover:animate-shake group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"
                             >
                                 Logout
                             </button>

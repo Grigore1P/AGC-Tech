@@ -55,23 +55,23 @@ const RegisterComponent: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@example.com"
-              className="w-full p-2 border bg-[#373A40] border-[#57033F] rounded mb-4 mt-2"
+              className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
           />
           <h5 className=" mt-[10px] w-40 text-[#686D76]">Nume</h5>
           <input
-              type="lastname"
+              type="text"
               value={lastname}
               onChange={(e) => setLastName(e.target.value)}
               placeholder="Nume"
-              className="w-full p-2 border bg-[#373A40] border-[#57033F] rounded mb-4 mt-2"
+              className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
           />
           <h5 className=" mt-[10px] w-40 text-[#686D76]">Prenume</h5>
           <input
-              type="name"
+              type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Prenume"
-              className="w-full p-2 border bg-[#373A40] border-[#57033F] rounded mb-4 mt-2"
+              className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
           />
           <h5 className="w-40 text-[#686D76]">Parola</h5>
           <input
@@ -79,14 +79,14 @@ const RegisterComponent: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Parola"
-              className="w-full p-2 bg-[#373A40] border border-[#57033F] rounded mb-4 mt-2"
+              className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
           />
           <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirmă parola"
-              className="w-full p-2 bg-[#373A40] border border-[#57033F] rounded mb-4"
+              className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
           />
           <button
               onClick={() => handleGoToLoginClick("login")}
