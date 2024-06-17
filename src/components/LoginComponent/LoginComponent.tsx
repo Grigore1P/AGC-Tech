@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import login from '../LoginComponent/login.jpg';
+import logo from "./logo.svg";
 
 interface LoginComponentProps {
     setIsLoggedIn: (isLoggedIn: boolean) => void;
