@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
 import { Navigate, useNavigate } from "react-router-dom";
 import { updateProfile } from 'firebase/auth';
+import logo from "./logo.svg";
 
 const RegisterComponent: React.FC = () => {
   const [email, setEmail] = useState("");

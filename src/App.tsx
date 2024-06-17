@@ -16,6 +16,7 @@ import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
 import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
 import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent";
 import { onAuthStateChanged } from "firebase/auth";
+import logo from "./logo.svg";
 import { auth } from "./firebase/firebaseConfig";
 
 const App: React.FC = () => {
