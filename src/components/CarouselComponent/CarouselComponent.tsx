@@ -1,62 +1,69 @@
 import { useState } from "react";
-import {
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-} from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 interface CarouselProps {
-  slides: string[];
+    slides: { image: string, path: string }[];
 }
+
 export default function Carousel({ slides }: CarouselProps) {
-  let [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(0);
+    const navigate = useNavigate();
 
-  let previousSlide = () => {
-    if (current === 0) setCurrent(slides.length - 1);
-    else setCurrent(current - 1);
-  };
+    const previousSlide = () => {
+        setCurrent(current === 0 ? slides.length - 1 : current - 1);
+    };
 
-  let nextSlide = () => {
-    if (current === slides.length - 1) setCurrent(0);
-    else setCurrent(current + 1);
-  };
+    const nextSlide = () => {
+        setCurrent(current === slides.length - 1 ? 0 : current + 1);
+    };
 
-  return (
-    <div className="overflow-hidden relative">
-      <div
-        className={`flex transition ease-out duration-40`}
-        style={{
-          transform: `translateX(-${current * 100}%)`,
-        }}
-      >
-        {slides.map((s) => {
-          return <img src={s} alt="" />;
-        })}
-      </div>
+    const goToSlide = (path: string) => {
+        navigate(path);
+    };
 
-      <div className="absolute top-0 justify-between items-center flex text-white px-10 text-3xl">
-        <button onClick={previousSlide}>
-          <BsFillArrowLeftCircleFill />
-        </button>
-        <button onClick={nextSlide}>
-          <BsFillArrowRightCircleFill />
-        </button>
-      </div>
-
-      <div className="absolute bottom-0 w-full py-4 flex justify-center gap-3 w-full">
-        {slides.map((s, i) => {
-          return (
+    return (
+        <div className="relative w-full h-96 overflow-hidden">
             <div
-              onClick={() => {
-                setCurrent(i);
-              }}
-              key={"circle" + i}
-              className={`rounded-full w-5 h-5 cursor-pointer  ${
-                i == current ? "bg-white" : "bg-gray-500"
-              }`}
-            ></div>
-          );
-        })}
-      </div>
-    </div>
-  );
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${current * 100}%)`, width: `${slides.length * 100}%` }}
+            >
+                {slides.map((slide, index) => (
+                    <div
+                        key={index}
+                        className="w-full h-full flex-shrink-0 flex items-center justify-center cursor-pointer"
+                        style={{ width: `100%` }}
+                        onClick={() => goToSlide(slide.path)}
+                    >
+                        <img src={slide.image} alt={`Slide ${index}`} className="w-full h-full object-cover" />
+                    </div>
+                ))}
+            </div>
+
+            <button
+                onClick={previousSlide}
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white p-2 rounded-full"
+            >
+                <BsFillArrowLeftCircleFill size={30} />
+            </button>
+            <button
+                onClick={nextSlide}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white p-2 rounded-full"
+            >
+                <BsFillArrowRightCircleFill size={30} />
+            </button>
+
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {slides.map((_, i) => (
+                    <div
+                        key={i}
+                        onClick={() => setCurrent(i)}
+                        className={`w-4 h-4 rounded-full cursor-pointer ${
+                            i === current ? "bg-white" : "bg-gray-500"
+                        }`}
+                    ></div>
+                ))}
+            </div>
+        </div>
+    );
 }
