@@ -26,13 +26,12 @@ export default function Carousel({ slides }: CarouselProps) {
         <div className="relative w-full h-96 overflow-hidden">
             <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${current * 100}%)`, width: `${slides.length * 100}%` }}
+                style={{ transform: `translateX(-${current * 100}%)` }}
             >
                 {slides.map((slide, index) => (
                     <div
                         key={index}
                         className="w-full h-full flex-shrink-0 flex items-center justify-center cursor-pointer"
-                        style={{ width: `100%` }}
                         onClick={() => goToSlide(slide.path)}
                     >
                         <img src={slide.image} alt={`Slide ${index}`} className="w-full h-full object-cover" />
@@ -58,9 +57,7 @@ export default function Carousel({ slides }: CarouselProps) {
                     <div
                         key={i}
                         onClick={() => setCurrent(i)}
-                        className={`w-4 h-4 rounded-full cursor-pointer ${
-                            i === current ? "bg-white" : "bg-gray-500"
-                        }`}
+                        className={`w-4 h-4 rounded-full cursor-pointer ${i === current ? "bg-white" : "bg-gray-500"}`}
                     ></div>
                 ))}
             </div>
