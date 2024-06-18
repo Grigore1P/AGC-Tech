@@ -16,7 +16,6 @@ import SQLPageComponent from "./components/SQLPageComponent/SQLPageComponent";
 import PremierePageComponent from "./components/PremierePageComponent/PremierePageComponent";
 import RegisterComponent from "./components/RegistrationComponent/RegistrationComponent";
 import { onAuthStateChanged } from "firebase/auth";
-import logo from "./logo.svg";
 import { auth } from "./firebase/firebaseConfig";
 
 const App: React.FC = () => {
@@ -32,10 +31,10 @@ const App: React.FC = () => {
     }, []);
 
     const slides = [
-        { image: "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg", path: "/" },
-        { image: "https://wallpapercave.com/wp/wp3386769.jpg", path: "/" },
-        { image: "https://wallpaperaccess.com/full/809523.jpg", path: "/" },
-        { image: "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg", path: "/" },
+        { image: "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg", path: "/hcpage" },
+        { image: "https://wallpapercave.com/wp/wp3386769.jpg", path: "/jspage" },
+        { image: "https://wallpaperaccess.com/full/809523.jpg", path: "/sqlpage" },
+        { image: "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg", path: "/premierepage" },
     ];
 
     return (
@@ -59,7 +58,7 @@ const App: React.FC = () => {
                                 <StartSectionComponent />
                                 <LearnITComponent />
                                 <div className="main w-full h-30 bg-gradient-to-r from-[#00052D] to-[#57033F]">
-                                    <div className="carousel-container mx-auto my-auto w-2/4 border-2 rounded-md">
+                                    <div className="carousel-container mx-auto my-auto w-full">
                                         <Carousel slides={slides} />
                                     </div>
                                 </div>
