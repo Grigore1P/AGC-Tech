@@ -4,29 +4,36 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+        animatetop: {
+          '0%': { top: '-300px', opacity: '0' },
+          '100%': { top: '0', opacity: '0.5' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        zoomIn: {
+          '0%': { opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)' },
+          '50%': { opacity: '0.5' },
         },
-        shake: {
-          '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-          '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
-          '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
-          '40%, 60%': { transform: 'translate3d(4px, 0, 0)' },
+        animate: {
+          '0%': {
+            transform: 'translateY(0) rotate(0deg)',
+            opacity: '0.5',
+            borderRadius: '0',
+          },
+          '100%': {
+            transform: 'translateY(-1000px) rotate(720deg)',
+            opacity: '0',
+            borderRadius: '40%',
+          },
+        },
+        rotate: {
+          "0%": { transform: "rotate(0deg) scale(10)" },
+          "100%": { transform: "rotate(-360deg) scale(10)" },
         },
       },
       animation: {
-        fadeIn: 'fadeIn 2s ease-in-out',
-        float: 'float 3s ease-in-out infinite',
-        shake: 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
-      },
-      boxShadow: {
-        '3xl': '0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1), 0 15px 30px rgba(0, 0, 0, 0.1)',
-        glow: '0 0 15px rgba(87, 3, 63, 0.8)',
+        animatetop: 'animatetop 0.5s ease-out',
+        zoomIn: 'zoomIn 0.5s ease-out',
+        animate: 'animate 4s linear infinite',
+        rotate: "rotate 10s linear infinite",
       },
     },
   },
