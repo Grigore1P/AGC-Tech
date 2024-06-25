@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import programming1 from "./programming1.jpg";
-import programming2 from "./programming2.jpg";
-import codingmeet from "./codingmeet.jpg";
-import programmer from "./programmer.jpg";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import programming1 from './programming1.jpg';
+import programming2 from './programming2.jpg';
+import codingmeet from './codingmeet.jpg';
+import programmer from './programmer.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const AboutUsComponent = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const navigate = useNavigate();
 
-
   const handleGoToCoursesClick = (category: string) => {
-      navigate('/courses');
+    navigate('/courses');
   };
   return (
     <div className="main bg-black h-fit relative w-screen">
@@ -40,11 +39,11 @@ const AboutUsComponent = () => {
       </div>
 
       <button
-          onClick={() => handleGoToCoursesClick("courses")}
+        onClick={() => handleGoToCoursesClick('courses')}
         className={`flex items-center justify-center ml-[650px] w-[200px] h-[80px] text-white rounded-3xl mt-10  transition-all ${
           isHovered
-            ? "bg-gradient-to-l from-[#00052D] to-[#57033F]"
-            : "bg-gradient-to-r from-[#00052D] to-[#57033F]"
+            ? 'bg-gradient-to-l from-[#00052D] to-[#57033F]'
+            : 'bg-gradient-to-r from-[#00052D] to-[#57033F]'
         }`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -98,8 +97,8 @@ const AboutUsComponent = () => {
       <button
         className={`flex items-center justify-center ml-[650px] w-[200px] h-[80px] text-white text-s font-sans rounded-3xl mt-10  transition-all ${
           isHovered2
-            ? "bg-gradient-to-l from-[#00052D] to-[#57033F]"
-            : "bg-gradient-to-r from-[#00052D] to-[#57033F]"
+            ? 'bg-gradient-to-l from-[#00052D] to-[#57033F]'
+            : 'bg-gradient-to-r from-[#00052D] to-[#57033F]'
         }`}
         onMouseEnter={() => setIsHovered2(true)}
         onMouseLeave={() => setIsHovered2(false)}
