@@ -33,13 +33,13 @@ const App: React.FC = () => {
   const slides = [
     {
       image:
-        'https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg',
+        '/imaginute/HTML&CSS.png',
       path: '/hcpage',
     },
-    { image: 'https://wallpapercave.com/wp/wp3386769.jpg', path: '/jspage' },
-    { image: 'https://wallpaperaccess.com/full/809523.jpg', path: '/sqlpage' },
+    { image: '/imaginute/JS.jpg', path: '/jspage' },
+    { image: '/imaginute/MySQL.png', path: '/sqlpage' },
     {
-      image: 'https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg',
+      image: 'imaginute/CS.png',
       path: '/premierepage',
     },
   ];
