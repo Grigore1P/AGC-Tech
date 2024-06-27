@@ -143,11 +143,11 @@ const ReviewsComponent = () => {
                   isHovered ? 'transform -rotate-180' : ''
               }`}
           >
-            Despre noi
+              FEEDBACK
           </span>
         </button>
         <p className="text-gray-400 font-sans text-s mt-4 ml-[670px]">
-          Află Mai Multe Despre Noi
+          Scrie-ne parerea ta
         </p>
         <br/>
         <br/>
