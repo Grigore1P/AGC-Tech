@@ -17,7 +17,7 @@ import PremierePageComponent from './components/PremierePageComponent/PremierePa
 import RegisterComponent from './components/RegistrationComponent/RegistrationComponent';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/firebaseConfig';
-
+import RecenzieComponent from "./components/RecenzieComponent/RecenzieComponent";
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,6 +65,7 @@ const App: React.FC = () => {
           <Route path="/sqlpage" element={<SQLPageComponent />} />
           <Route path="/premierepage" element={<PremierePageComponent />} />
           <Route path="/contactus" element={<PremierePageComponent />} />
+          <Route path="/opiniataconteaza" element={<RecenzieComponent />} />
           <Route
             path="/"
             element={
