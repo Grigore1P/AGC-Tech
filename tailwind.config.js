@@ -25,15 +25,53 @@ module.exports = {
           },
         },
         rotate: {
-          "0%": { transform: "rotate(0deg) scale(10)" },
-          "100%": { transform: "rotate(-360deg) scale(10)" },
+          '0%': { transform: 'rotate(0deg) scale(10)' },
+          '100%': { transform: 'rotate(-360deg) scale(10)' },
+        },
+        wavy: {
+          '0%, 100%': { backgroundPosition: '0 0' },
+          '50%': { backgroundPosition: '100% 100%' },
+        },
+        gradientX: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
+        gradientY: {
+          '0%, 100%': {
+            'background-size': '400% 400%',
+            'background-position': 'center top',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'center center',
+          },
+        },
+        gradientXY: {
+          '0%, 100%': {
+            'background-size': '400% 400%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
         },
       },
       animation: {
         animatetop: 'animatetop 0.5s ease-out',
         zoomIn: 'zoomIn 0.5s ease-out',
         animate: 'animate 4s linear infinite',
-        rotate: "rotate 10s linear infinite",
+        rotate: 'rotate 10s linear infinite',
+        'wavy-bg': 'wavy 5s infinite linear',
+        'gradient-x': 'gradientX 15s ease infinite',
+        'gradient-y': 'gradientY 15s ease infinite',
+        'gradient-xy': 'gradientXY 15s ease infinite',
       },
     },
   },
