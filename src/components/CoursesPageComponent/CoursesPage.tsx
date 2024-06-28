@@ -268,7 +268,7 @@ const CoursesPage = () => {
                   Explorează cursurile noastre
               </h1>
               <img
-                  className="w-[55px] h-[55px] ml-[230px] mt-[-45px] ml-[1000px] rounded-full"
+                  className="w-[55px] h-[55px] ml-[230px] mt-[-45px] ml-[998px] rounded-full"
                   src={iconcoding}
                   alt=""
               />
