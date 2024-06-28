@@ -1,167 +1,102 @@
-import React, {useState} from 'react';
-import { AiFillStar } from 'react-icons/ai'; // Assuming you're using react-icons for icons
-import review1 from './review1.jpg';
-import review2 from './review2.jpg';
-import review3 from './review3.jpg';
-import review4 from './review4.jpg';
-import review5 from './review5.jpg';
-import review6 from './review6.jpg';
-import {useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { db } from '../../firebase/firebaseConfig';
+import { collection, query, orderBy, onSnapshot, limit } from 'firebase/firestore';
+import { AiFillStar } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const ReviewsComponent = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
+    const [reviews, setReviews] = useState<any[]>([]);
+    const [hoveredReview, setHoveredReview] = useState<string | null>(null);
+    const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate('/about-us');
-  };
-  return (
-      <div className="main bg-black to-[#240046] w-full h-fit mt-10 relative mb-[-220px]">
-        <div className="results flex justify-center text-center">
-          <h1 className="text-3xl text-white font-bold font-sans ml-30 mt-10">
-            Recenziile studenților noștri
-          </h1>
-          <h2 className="text-sm text-gray-400 mt-20 ml-[-350px]">
-            Peste 2000 de clienți satisfăcuți, angajați actuali ⭐
-          </h2>
+    useEffect(() => {
+        const q = query(
+            collection(db, 'reviews'),
+            orderBy('date', 'desc'),
+            limit(3)
+        );
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const reviewsArray: any[] = [];
+            querySnapshot.forEach((doc) => {
+                reviewsArray.push({ id: doc.id, ...doc.data() });
+            });
+            setReviews(reviewsArray);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <div className="flex flex-col items-center bg-gradient-to-r from-[#DABFFF] to-[#907AD6] py-10 min-h-screen">
+            <div className="text-center mb-10">
+                <h1 className="text-3xl text-white font-bold">
+                    Recenziile studenților noștri
+                </h1>
+                <h2 className="text-sm text-gray-400 mt-2">
+                    Peste 2000 de clienți satisfăcuți, angajați actuali ⭐
+                </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl px-4">
+                {reviews.length > 0 ? (
+                    reviews.map((review) => (
+                        <div
+                            key={review.id}
+                            className={`relative flex flex-col items-center justify-center bg-gradient-to-r from-[#00052D] to-[#57033F] rounded-xl border border-slate-800 p-4 transform transition-transform duration-300 cursor-pointer ${
+                                hoveredReview === review.id ? 'absolute inset-0 w-full h-full z-50' : 'h-80'
+                            }`}
+                            onMouseEnter={() => setHoveredReview(review.id)}
+                            onMouseLeave={() => setHoveredReview(null)}
+                        >
+                            <div className="w-full bg-slate-900 rounded-lg p-4">
+                                <p className="text-[#ffc0eb] text-lg font-bold mb-2">
+                                    {review.name}
+                                </p>
+                                <div className="flex items-center justify-center">
+                                    {[...Array(review.rating)].map((_, i) => (
+                                        <AiFillStar key={i} color="white" />
+                                    ))}
+                                </div>
+                                <p className="text-gray-400">
+                                    {review.feedback.length > 20
+                                        ? review.feedback.substring(0, 20) + '...'
+                                        : review.feedback}
+                                </p>
+                            </div>
+                            {hoveredReview === review.id && (
+                                <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 rounded-xl">
+                                    <div className="bg-slate-900 rounded-lg p-6 w-full h-full flex flex-col justify-center items-center text-center text-white">
+                                        <h2 className="text-2xl font-bold mb-4">{review.name}</h2>
+                                        <p className="text-sm mb-4">{review.feedback}</p>
+                                        <div className="flex items-center justify-center mb-4">
+                                            {[...Array(review.rating)].map((_, i) => (
+                                                <AiFillStar key={i} color="white" size={24} />
+                                            ))}
+                                        </div>
+                                        <button
+                                            className="bg-gradient-to-r from-[#DABFFF] to-[#907AD6] text-white py-2 px-4 rounded-lg"
+                                            onClick={() => navigate('/opiniataconteaza')}
+                                        >
+                                            Give Feedback
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-white text-center w-full">No reviews available</p>
+                )}
+            </div>
+            <div className="mt-10 flex flex-col items-center">
+                <button
+                    onClick={() => navigate('/opiniataconteaza')}
+                    className="w-32 h-12 text-white rounded-xl transition-all bg-gradient-to-r from-[#00052D] to-[#57033F]"
+                >
+                    <span className="transition-transform">FEEDBACK</span>
+                </button>
+                <p className="text-gray-200 font-sans text-sm mt-4">Scrie-ne parerea ta</p>
+            </div>
         </div>
-        <div className="reviews grid grid-cols-3 mt-10 ml-[-20px]">
-
-          <div className="Review1 mx-auto flex w-[340px] h-80 max-w-lg items-center justify-center mt-[-30px] transform hover:scale-110 transition-transform duration-300 perspective-1000">
-            <div
-                className="relative z-10 flex w-[340px] cursor-pointer items-center overflow-hidden rounded-xl border border-slate-800 p-[1.5px]">
-              <div
-                  className="animate-rotate absolute inset-0 h-full w-[340px] rounded-full bg-[conic-gradient(#ffc0eb_20deg,transparent_120deg)]"
-              ></div>
-              <div className="relative z-20 w-[340px] rounded-[0.60rem] bg-slate-900 p-2">
-                <img className="w-20 h-20 rounded-3xl" src={review1} alt=""/>
-                <p className="text-[#ffc0eb] text-base w-[250px] font-bold font-sans ml-24 mt-[-70px]">
-                  Alexandru Păduraru<br/>
-                  Middle Front-End Developer
-                </p>
-
-                <p className="text-sm mt-[50px] font-sans text-gray-400">
-                  ,,Am absolvit cursul de Web Design la AGC Tech acum 2 ani, acesta mi-a
-                  oferit o combinație perfectă între teorie și practică, să dezvolt
-                  abilități esențiale în dezvoltarea front-end.''
-                </p>
-
-                <div className="flex items-center mt-6">
-                  {[...Array(4)].map((star, i) => {
-                    const ratingValue = i + 1;
-                    return (
-                        <AiFillStar
-                            key={i}
-                            color={ratingValue <= 5 ? 'white' : 'white'}
-                        />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div className="Review2 mx-auto flex w-[340px] h-96 max-w-lg items-center justify-center mr-16 transform hover:scale-110 transition-transform duration-300 perspective-1000">
-            <div
-                className="relative z-10 flex w-[340px] cursor-pointer items-center overflow-hidden rounded-xl border border-slate-800 p-[1.5px]">
-              <div
-                  className="animate-rotate absolute inset-0 h-full w-[340px] rounded-full bg-[conic-gradient(#ffc0eb_20deg,transparent_120deg)]"
-              ></div>
-              <div className="relative z-20 w-[340px] rounded-[0.60rem] bg-slate-900 p-2">
-                <img className="w-20 h-20 rounded-3xl" src={review4} alt=""/>
-                <p className="text-[#ffc0eb] text-base w-[250px] font-bold font-sans ml-24 mt-[-70px]">
-                  Rareș Gavril<br/>
-                  Junior Back-End Developer
-                </p>
-
-                <p className="text-sm mt-[50px] font-sans text-gray-400">
-                  ,,Curs bine structurat și acoperă în profunzime aspectele de bază ale
-                  gestionării bazelor de date relaționale MySQL.''
-                </p>
-
-                <div className="flex items-center mt-6">
-                  {[...Array(4)].map((star, i) => {
-                    const ratingValue = i + 1;
-                    return (
-                        <AiFillStar
-                            key={i}
-                            color={ratingValue <= 5 ? 'white' : 'white'}
-                        />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="Review3 mx-auto flex w-[340px] h-[244px] max-w-lg items-center justify-center mr-20 transform hover:scale-110 transition-transform duration-300 perspective-1000">
-            <div
-                className="relative z-10 flex w-[340px] cursor-pointer items-center overflow-hidden rounded-xl border border-slate-800 p-[1.5px]">
-              <div
-                  className="animate-rotate absolute inset-0 h-full w-[340px] rounded-full bg-[conic-gradient(#ffc0eb_20deg,transparent_120deg)]"
-              ></div>
-              <div className="relative z-20 w-[340px] rounded-[0.60rem] bg-slate-900 p-2">
-                <img className="w-20 h-20 rounded-3xl" src={review6} alt=""/>
-                <p className="text-[#ffc0eb] text-base w-[250px] font-bold font-sans ml-24 mt-[-70px]">
-                  Alexa Bordea<br/>
-                  Freelancer Video Editor
-                </p>
-
-                <p className="text-sm mt-[50px] font-sans text-gray-400">
-                  ,,Cu ajutorul acestui curs am reușit să am primii clienți pe FIVERR,
-                  după luni de muncă pe cont propriu.''
-                </p>
-
-                <div className="flex items-center mt-6">
-                  {[...Array(5)].map((star, i) => {
-                    const ratingValue = i + 1;
-                    return (
-                        <AiFillStar
-                            key={i}
-                            color={ratingValue <= 5 ? 'white' : 'white'}
-                        />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button
-            onClick={handleButtonClick}
-            className={`w-32 h-12 text-white ml-[700px] rounded-xl transition-all relative transform ${
-                isHovered
-                    ? 'rotate-180 bg-gradient-to-r from-[#DABFFF] to-[#907AD6]'
-                    : ''
-            } bg-gradient-to-r from-[#00052D] to-[#57033F]`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-          <span
-              className={`absolute inset-0 flex items-center justify-center transition-transform ${
-                  isHovered ? 'transform -rotate-180' : ''
-              }`}
-          >
-              FEEDBACK
-          </span>
-        </button>
-        <p className="text-gray-400 font-sans text-s mt-4 ml-[670px]">
-          Scrie-ne parerea ta
-        </p>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-      </div>
-  );
+    );
 };
 
 export default ReviewsComponent;
