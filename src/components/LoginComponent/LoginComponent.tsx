@@ -50,63 +50,71 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ setIsLoggedIn }) => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="p-6 max-w-sm w-full bg-[#222831] text-white shadow-md rounded-md mr-40">
+    <div className="text-black p-10 relative w-screen bg-gradient-to-r from-black to-[#57033F] via-black animate-gradient-x min-h-screen flex items-center justify-center">
+      <div
+          className="p-6 max-w-sm w-full bg-gradient-to-r from-[#57033F] to-[#ffacc5] text-white shadow-md rounded-md mr-40">
         <h2 className="text-2xl font-bold mb-6 text-center">Conectează-te</h2>
         {error && (
-          <div className="text-red-500 mb-4">{`Firebase: ${error}`}</div>
+            <div className="text-red-500 mb-4">{`Firebase: ${error}`}</div>
         )}
-        <h5 className=" mt-[10px] w-40 text-[#686D76]">Email</h5>
+        <h5 className=" mt-[10px] w-40 text-white">Email</h5>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="name@example.com"
-          className={
-            'mb-4 p-2 w-full border border-[#57033f] rounded bg-[#373A40] text-white mt-2 focus:border-[#ffc0eb]'
-          }
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@example.com"
+            className={
+              'mb-4 p-2 w-full border border-[#57033f] rounded-xl bg-pink-300  text-white mt-2 focus:border-[#ffc0eb]'
+            }
         />
+        <h5 className=" mt-[10px] w-40 text-white">Parolă</h5>
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="**********"
-          className={
-            'mb-4 p-2 w-full border border-[#57033f] rounded bg-[#373A40] text-white mt-2 focus:border-[#ffc0eb]'
-          }
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="**********"
+            className={
+              'mb-4 p-2 w-full border border-[#57033f] rounded-xl bg-pink-300 text-white mt-2 focus:border-[#ffc0eb]'
+            }
         />
 
         <button className="ml-48 mt-[10px] w-40">Am uitat parola</button>
 
         <label
-          htmlFor="rememberMe"
-          className="flex items-center mt-2 cursor-pointer"
+            htmlFor="rememberMe"
+            className="flex items-center mt-2 cursor-pointer"
         >
           <input
-            type="checkbox"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="**********"
-            className="mb-4 p-2 mt-[-32px] border border-[#57033F] rounded bg-[#373A40] text-[#57033F] w-6 h-6"
+              type="checkbox"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="**********"
+              className="mb-4 p-2 mt-[-32px] border border-[#57033F] rounded bg-pink-300 text-[#57033F] w-6 h-6"
           />
           <span className="ml-2 mt-[-50px] w-32">Ține-mă minte</span>
         </label>
 
         <button
-          onClick={handleLogin}
-          className={`p-2 w-32 h-12 rounded-xl ml-24 bg-[#57033F] text-[#F3D7CA] mt-6 ${
-            isHovered
-              ? 'bg-gradient-to-l from-[#00052D] to-[#57033F]'
-              : 'bg-gradient-to-r from-[#00052D] to-[#57033F]'
-          }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+            onClick={handleLogin}
+            className={`p-2 w-32 h-12 rounded-xl ml-24 text-[#F3D7CA] transition-all relative transform mt-6 ${
+                isHovered
+                    ? 'rotate-180 bg-gradient-to-r from-pink-500 to-pink-400'
+                    : ''
+            } bg-gradient-to-r from-[#00052D] to-[#57033F]`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
-          Login
+        <span
+            className={`absolute inset-0 flex items-center justify-center transition-transform ${
+                isHovered ? 'transform -rotate-180' : ''
+            }`}
+        >
+            Submit
+          </span>
         </button>
       </div>
 
-      <img src={login} alt="" className="w-[360px] h-[440px] rounded-3xl" />
+      <img src={login} alt="" className="w-[360px] h-[440px] rounded-3xl"/>
     </div>
   );
 };
