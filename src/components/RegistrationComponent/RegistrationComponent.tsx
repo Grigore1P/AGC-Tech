@@ -45,68 +45,77 @@ const RegisterComponent: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[1200px] bg-black">
-      <div className="bg-[#222831] p-8 rounded-2xl shadow-md w-full max-w-md">
+    <div className="flex justify-center items-center h-[1200px] bg-gradient-to-r from-black to-[#57033F] via-black animate-gradient-x min-h-screen">
+      <div
+          className="bg-gradient-to-r from-[#57033F] to-[#ffacc5] p-8 mt-[-150px] rounded-2xl shadow-md w-full max-w-md">
         <h2 className="text-2xl text-white font-bold mb-4">Înregistrează-te</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
-        <h5 className=" mt-[10px] w-40 text-[#686D76]">Email</h5>
+        <h5 className=" mt-[10px] w-40 text-white">Email</h5>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="name@example.com"
-          className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@example.com"
+            className="w-full p-2 border bg-pink-300 border-[#57033F] text-white rounded-xl mb-4 mt-2 focus:border-[#ffc0eb]"
         />
-        <h5 className=" mt-[10px] w-40 text-[#686D76]">Nume</h5>
+        <h5 className=" mt-[10px] w-40 text-white">Nume</h5>
         <input
-          type="text"
-          value={lastname}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Nume"
-          className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
+            type="text"
+            value={lastname}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Nume"
+            className="w-full p-2 border bg-pink-300 border-[#57033F] text-white rounded-xl mb-4 mt-2 focus:border-[#ffc0eb]"
         />
-        <h5 className=" mt-[10px] w-40 text-[#686D76]">Prenume</h5>
+        <h5 className=" mt-[10px] w-40 text-white">Prenume</h5>
         <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Prenume"
-          className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Prenume"
+            className="w-full p-2 border bg-pink-300 border-[#57033F] text-white rounded-xl mb-4 mt-2 focus:border-[#ffc0eb]"
         />
-        <h5 className="w-40 text-[#686D76]">Parola</h5>
+        <h5 className="w-40 text-white">Parola</h5>
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Parola"
-          className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Parola"
+            className="w-full p-2 border bg-pink-300 border-[#57033F] text-white rounded-xl mb-4 mt-2 focus:border-[#ffc0eb]"
         />
         <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirmă parola"
-          className="w-full p-2 border bg-[#373A40] border-[#57033F] text-white rounded mb-4 mt-2 focus:border-[#ffc0eb]"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirmă parola"
+            className="w-full p-2 border bg-pink-300 border-[#57033F] text-white rounded-xl mb-4 mt-2 focus:border-[#ffc0eb]"
         />
         <button
-          onClick={() => handleGoToLoginClick('login')}
-          className={`w-40 ml-[-30px] text-white ${isTextHovered ? 'underline' : ''}`}
-          onMouseEnter={() => setIsTextHovered(true)}
-          onMouseLeave={() => setIsTextHovered(false)}
+            onClick={() => handleGoToLoginClick('login')}
+            className={`w-40 ml-[-30px] text-white ${isTextHovered ? 'underline' : ''}`}
+            onMouseEnter={() => setIsTextHovered(true)}
+            onMouseLeave={() => setIsTextHovered(false)}
         >
           Ai deja cont?
         </button>
+
+        {/* p-2 w-32 h-12 rounded-xl ml-32 bg-[#57033F] text-[#F3D7CA] mt-2*/}
         <button
-          onClick={handleRegister}
-          className={`p-2 w-32 h-12 rounded-xl ml-32 bg-[#57033F] text-[#F3D7CA] mt-2 ${
-            isHovered
-              ? 'bg-gradient-to-l from-[#00052D] to-[#57033F]'
-              : 'bg-gradient-to-r from-[#00052D] to-[#57033F]'
-          }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+            onClick={handleRegister}
+            className={`p-2 w-32 h-12 rounded-xl ml-32 text-[#F3D7CA] transition-all relative transform mt-2 ${
+                isHovered
+                    ? 'rotate-180 bg-gradient-to-r from-pink-500 to-pink-400'
+                    : ''
+            } bg-gradient-to-r from-[#00052D] to-[#57033F]`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
-          Intră
+        <span
+            className={`absolute inset-0 flex items-center justify-center transition-transform ${
+                isHovered ? 'transform -rotate-180' : ''
+            }`}
+        >
+            Submit
+          </span>
         </button>
       </div>
     </div>
