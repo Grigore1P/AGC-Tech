@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -11,6 +11,38 @@ interface PaymentComponentProps {
   user: any;
   addToCart: (courseId: string, amount: number) => void;
 }
+
+const generateDots = (numDots: number) => {
+  const dots = [];
+  for (let i = 0; i < numDots; i++) {
+    const size = Math.random() * 5 + 2;
+    const left = Math.random() * 100;
+    const delay = Math.random() * 5;
+    const duration = Math.random() * 5 + 3;
+    dots.push(
+        <div
+            key={i}
+            className="absolute bg-[#FFD0D0] rounded-full"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              left: `${left}%`,
+              animation: `fall ${duration}s linear ${delay}s infinite`,
+              boxShadow: '0 0 10px #FFD0D0, 0 0 20px #FFD0D0, 0 0 30px #FFD0D0, 0 0 40px #FFD0D0',
+            }}
+        >
+          <div
+              className="absolute top-0 left-0 w-full h-full bg-[#FFD0D0] opacity-20 rounded-full"
+              style={{
+                filter: 'blur(5px)',
+                animation: `trail ${duration}s linear ${delay}s infinite`,
+              }}
+          ></div>
+        </div>
+    );
+  }
+  return dots;
+};
 
 const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addToCart }) => {
   const stripe = useStripe();
@@ -84,7 +116,20 @@ const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addTo
   };
 
   return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-[#F3D7CA] to-[#57033F]" style={{ backgroundImage: 'url(/imaginute/union.png)', backgroundSize: 'cover' }}>
+      <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-[#F3D7CA] to-[#57033F]" style={{ backgroundImage: 'url(/imaginute/union.png)', backgroundSize: 'cover' }}>
+        <style>{`
+        @keyframes fall {
+          0% { transform: translateY(-10px); opacity: 1; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes trail {
+          0% { transform: translateY(-10px); opacity: 0.5; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }
+      `}</style>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {generateDots(500)}
+        </div>
         <h1 className="text-4xl font-bold mb-8 text-white drop-shadow-lg">WEB PAYMENT PAGE</h1>
         <div className="relative w-full max-w-4xl p-10 bg-white bg-opacity-90 rounded-lg shadow-2xl">
           <form onSubmit={handlePayment} className="relative w-full max-w-4xl p-10 bg-transparent rounded-lg transition-transform transform hover:scale-105">
@@ -197,3 +242,4 @@ const PaymentComponent: React.FC<PaymentComponentProps> = (props) => (
 );
 
 export default PaymentComponent;
+
