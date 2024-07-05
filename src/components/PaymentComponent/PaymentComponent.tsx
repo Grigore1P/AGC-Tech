@@ -12,6 +12,22 @@ interface PaymentComponentProps {
   addToCart: (courseId: string, amount: number) => void;
 }
 
+const generateDots = (numDots: number) => {
+  const directions = ['fall', 'fall-diagonal', 'fall-left'];
+  const dots = [];
+  for (let i = 0; i < numDots; i++) {
+    const direction = directions[Math.floor(Math.random() * directions.length)];
+    const sizeClass = `w-${Math.floor(Math.random() * 5) + 2} h-${Math.floor(Math.random() * 5) + 2}`;
+    const leftClass = `left-${Math.floor(Math.random() * 100)}`;
+    const topClass = `top-${Math.floor(Math.random() * -20)}`;
+    const delayClass = `delay-${Math.floor(Math.random() * 3)}`;
+    dots.push(
+        <div key={i} className={`absolute bg-white rounded-full ${direction} ${sizeClass} ${leftClass} ${topClass} ${delayClass} glow`} />
+    );
+  }
+  return dots;
+};
+
 const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addToCart }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -84,14 +100,17 @@ const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addTo
   };
 
   return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-[#F3D7CA] to-[#57033F]" style={{ backgroundImage: 'url(/imaginute/union.png)', backgroundSize: 'cover' }}>
+      <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-[#F3D7CA] to-[#57033F] bg-cover bg-center" style={{ backgroundImage: 'url(/imaginute/union.png)' }}>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {generateDots(167)}
+        </div>
         <h1 className="text-4xl font-bold mb-8 text-white drop-shadow-lg">WEB PAYMENT PAGE</h1>
         <div className="relative w-full max-w-4xl p-10 bg-white bg-opacity-90 rounded-lg shadow-2xl">
           <form onSubmit={handlePayment} className="relative w-full max-w-4xl p-10 bg-transparent rounded-lg transition-transform transform hover:scale-105">
             <div className="relative w-full h-[30rem] overflow-hidden rounded-lg shadow-2xl">
               <div className="absolute inset-0 border-4 border-white rounded-xl animate-pulse"></div>
               <div className="relative flex flex-col items-center bg-gradient-to-r from-[#00052D] to-[#57033F] text-[#FFD0D0] rounded-xl p-8 mb-6 shadow-2xl w-full h-full">
-                <div className="absolute inset-0 w-full h-full opacity-30 bg-gradient-to-r from-transparent via-white to-transparent" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ffffff33 0, #ffffff33 1px, transparent 1px, transparent 4px)' }}></div>
+                <div className="absolute inset-0 w-full h-full opacity-30 bg-gradient-to-r from-transparent via-white to-transparent bg-repeating-linear-45"></div>
                 <div className="flex justify-between items-center w-full mb-8 relative z-10">
                   <div className="text-4xl font-extrabold tracking-wide text-[#FFD0D0] drop-shadow-lg">
                     AGC Card
@@ -102,23 +121,7 @@ const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addTo
                   <label className="block text-sm mb-2 text-[#FFD0D0] drop-shadow-md">
                     Card Number
                   </label>
-                  <CardElement
-                      className="w-full p-3 bg-transparent border border-gray-300 rounded-lg focus:outline-none shadow-inner"
-                      options={{
-                        style: {
-                          base: {
-                            fontSize: '18px',
-                            color: '#FFD0D0',
-                            '::placeholder': {
-                              color: '#a0aec0',
-                            },
-                          },
-                          invalid: {
-                            color: '#e53e3e',
-                          },
-                        },
-                      }}
-                  />
+                  <CardElement className="w-full p-3 bg-transparent border border-gray-300 rounded-lg focus:outline-none shadow-inner" />
                 </div>
                 <div className="w-full mb-6 relative z-10">
                   <label className="block text-sm mb-2 text-[#FFD0D0] drop-shadow-md">
@@ -171,12 +174,7 @@ const CheckoutForm: React.FC<PaymentComponentProps> = ({ setHasPaid, user, addTo
                 className="w-full mt-6 bg-blue-500 text-white font-bold rounded-lg h-12 flex items-center justify-center shadow-xl transform transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
             >
               {processing ? (
-                  <motion.div
-                      className="w-6 h-6 border-4 border-t-4 border-t-transparent border-white rounded-full animate-spin"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                  />
+                  <motion.div className="w-6 h-6 border-4 border-t-4 border-t-transparent border-white rounded-full animate-spin" />
               ) : (
                   `Pay $${courseAmount}`
               )}

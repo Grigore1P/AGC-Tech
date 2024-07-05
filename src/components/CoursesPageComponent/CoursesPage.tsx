@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import htmlcss1 from './htmlcss1.jpg';
 import javascript from './javascript.png';
@@ -14,26 +14,32 @@ const CoursesPage = () => {
     const handleButtonClick = () => {
         navigate('/about-us');
     };
-    const circlesArray = [...Array(15)].map((_, i) => {
-        const size = Math.random() * 80 + 10;
-        const delay = Math.random() * 15 + 's';
-        const duration = Math.random() * 20 + 15 + 's';
-        const left = Math.random() * 80 + '%';
 
-        return (
-            <li
-                key={i}
-                className="absolute block list-none bg-gradient-to-r from-gray-200 to-pink-400 bg-opacity-100 animate-animate bottom-[-150px]"
-                style={{
-                    width: size,
-                    height: size,
-                    animationDelay: delay,
-                    animationDuration: duration,
-                    left: left,
-                }}
-            ></li>
-        );
-    });
+    const [circlesArray, setCirclesArray] = useState<ReactNode[]>([]);
+
+    useEffect(() => {
+        const circles = [...Array(15)].map((_, i) => {
+            const size = Math.random() * 80 + 10;
+            const delay = Math.random() * 15 + 's';
+            const duration = Math.random() * 20 + 15 + 's';
+            const left = Math.random() * 80 + '%';
+
+            return (
+                <li
+                    key={i}
+                    className="absolute block list-none bg-gradient-to-r from-gray-200 to-pink-400 bg-opacity-100 animate-animate bottom-[-150px]"
+                    style={{
+                        width: size,
+                        height: size,
+                        animationDelay: delay,
+                        animationDuration: duration,
+                        left: left,
+                    }}
+                ></li>
+            );
+        });
+        setCirclesArray(circles);
+    }, []);
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
@@ -50,7 +56,7 @@ const CoursesPage = () => {
       case 'front-end':
         return (
           <>
-            <div className="Course1 bg-[#31363F]  rounded-md w-80 h-72 p-4 transform hover:scale-105 transition-transform duration-300 perspective-1000">
+            <div className="Course1 bg-[#31363F] rounded-md w-80 h-72 p-4 transform hover:scale-105 transition-transform duration-300 perspective-1000">
               <h2 className="text-white font-bold font-sans">HTML & CSS</h2>
               <img
                 className="w-[55px] h-[55px] ml-[230px] mt-[-30px] rounded-full"
@@ -127,7 +133,7 @@ const CoursesPage = () => {
         );
       case 'video-editing':
         return (
-          <div className="Course4 bg-[#31363F] rounded-md mt-10 w-80 h-72 p-4 transform hover:scale-105 transition-transform duration-300 perspective-1000">
+          <div className="Course4 bg-[#31363F] rounded-md w-80 h-72 p-4 transform hover:scale-105 transition-transform duration-300 perspective-1000">
             <h2 className="text-white font-bold font-sans">
               Adobe Premiere Pro
             </h2>
