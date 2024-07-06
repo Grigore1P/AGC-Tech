@@ -3,7 +3,7 @@ import React from 'react';
 const BottomVideoComponent = () => {
     return (
         <div
-            className="w-[1520px] h-[262px] motivation relative z-1 ">
+            className="w-full h-[262px] motivation relative z-1 ">
             <div className="video-wrapper absolute inset-0 overflow-hidden rounded">
                 <video autoPlay loop muted className="object-cover w-full h-full">
                     <source
