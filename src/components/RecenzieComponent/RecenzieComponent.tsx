@@ -76,7 +76,7 @@ const RecenzieComponent = () => {
             <ul className="circles absolute top-0 left-0 w-full h-[96%] overflow-hidden -z-1">
                 {circlesArray}
             </ul>
-            <div className='recenzie bg-gradient-to-r from-[#57033F] to-[#ffacc5] p-8 rounded-2xl shadow-md w-full h-[600px] max-w-md z-10'>
+            <div className='recenzie bg-gradient-to-r from-[#57033F] to-[#ffacc5] p-8 mt-14 rounded-2xl shadow-md w-full h-[600px] max-w-md z-10'>
                 <h1 className='text-2xl flex justify-center text-white font-bold mb-4'>Leave Your Feedback</h1>
                 <form onSubmit={handleSubmit} className='space-y-6'>
                     <div>

@@ -21,6 +21,7 @@ import CartComponent from './components/CartComponent/CartComponent'; // Import 
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/firebaseConfig';
 import RecenzieComponent from './components/RecenzieComponent/RecenzieComponent';
+import BottomVideoComponent from "./components/BottomVideoComponent/BottomVideoComponent";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -67,17 +68,10 @@ const App: React.FC = () => {
   return (
       <Router>
         <div className="App">
-          <HeaderComponent
-              user={user}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-          />
+          <HeaderComponent user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           <Routes>
             <Route path="/about-us" element={<AboutUsComponent />} />
-            <Route
-                path="/login"
-                element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />}
-            />
+            <Route path="/login" element={<LoginComponent setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<RegisterComponent />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/hcpage" element={<HCPageComponent hasPaid={hasPaid} />} />
@@ -104,6 +98,7 @@ const App: React.FC = () => {
                       </div>
                     </div>
                     <ScopComponent />
+                    <BottomVideoComponent />
                     <ReviewsComponent />
                   </div>
                 }

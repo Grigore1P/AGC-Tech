@@ -46,7 +46,7 @@ const RegisterComponent: React.FC = () => {
   return (
       <div className="relative min-h-screen flex justify-center items-center bg-gray-900">
         <div className="absolute inset-0 bg-gradient-to-r from-[#57033F] to-[#ffacc5] blur-lg"></div>
-        <div className="relative flex flex-col md:flex-row w-11/12 lg:w-9/12 bg-white rounded-2xl shadow-xl z-10">
+        <div className="relative flex flex-col md:flex-row w-11/12 lg:w-9/12 bg-white rounded-2xl shadow-xl z-10 mt-10 mb-10">
           <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-8 bg-gradient-to-r from-[#57033F] to-[#ffacc5] text-white rounded-t-2xl md:rounded-l-2xl md:rounded-t-none">
             <h2 className="text-4xl font-bold mb-4">Welcome to Our Service</h2>
             <p className="text-lg mb-4">Secure, easy way to register and get started.</p>
