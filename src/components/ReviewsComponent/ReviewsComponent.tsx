@@ -18,26 +18,6 @@ const ReviewsComponent = () => {
     const navigate = useNavigate();
     const [isHovered, setIsHovered] = useState(false);
 
-    const [circlesArray, setCirclesArray] = useState<ReactNode[]>([]);
-
-    useEffect(() => {
-        const circles = [...Array(15)].map((_, i) => {
-            const size = Math.random() * 80 + 10;
-            const delay = Math.random() * 15 + 's';
-            const duration = Math.random() * 20 + 15 + 's';
-            const left = Math.random() * 80 + '%';
-
-            return (
-                <li
-                    key={i}
-                    className={`absolute block list-none bg-gradient-to-r from-gray-200 to-pink-400 bg-opacity-100 animate-animate bottom-[-150px] circle-${i}`}
-                    style={{ width: size, height: size, animationDelay: delay, animationDuration: duration, left: left }}
-                ></li>
-            );
-        });
-        setCirclesArray(circles);
-    }, []);
-
     useEffect(() => {
         const q = query(
             collection(db, 'reviews'),
@@ -57,9 +37,6 @@ const ReviewsComponent = () => {
     return (
         <div className="relative flex flex-col items-center bg-gradient-to-r from-black to-[#240046] py-10 min-h-screen overflow-hidden">
             <div className="text-center mb-10 z-10">
-                <ul className="circles absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-                    {circlesArray}
-                </ul>
                 <h1 className="text-3xl text-white font-bold">
                     Recenziile studenților noștri
                 </h1>
@@ -73,10 +50,11 @@ const ReviewsComponent = () => {
                         <div
                             key={review.id}
                             className={`relative flex flex-col items-center justify-center bg-gradient-to-r from-[#00052D] to-[#57033F] rounded-xl border border-slate-800 p-4 transform transition-transform duration-300 cursor-pointer ${
-                                hoveredReview === review.id ? 'absolute inset-0 w-full h-full z-50' : 'h-80'
+                                hoveredReview === review.id ? 'scale-105' : ''
                             }`}
                             onMouseEnter={() => setHoveredReview(review.id)}
                             onMouseLeave={() => setHoveredReview(null)}
+                            style={{ height: '20rem' }} // Consistent height
                         >
                             <div className="w-full bg-slate-900 rounded-lg p-4">
                                 <p className="text-[#ffc0eb] text-lg font-bold mb-2">
@@ -122,18 +100,18 @@ const ReviewsComponent = () => {
                 <button
                     onClick={() => navigate('/opiniataconteaza')}
                     className={`w-32 h-12 text-white rounded-xl mt-10 transition-all relative transform ${
-                        isHovered
-                            ? 'rotate-180 bg-gradient-to-r from-[#DABFFF] to-[#907AD6]'
-                            : ''
+                        isHovered ? 'rotate-180 bg-gradient-to-r from-[#DABFFF] to-[#907AD6]' : ''
                     } bg-gradient-to-r from-[#00052D] to-[#57033F]`}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
-          <span
-              className={`absolute inset-0 flex items-center justify-center transition-transform ${
-                  isHovered ? 'transform -rotate-180' : ''
-              }`}
-          >FEEDBACK</span>
+                    <span
+                        className={`absolute inset-0 flex items-center justify-center transition-transform ${
+                            isHovered ? 'transform -rotate-180' : ''
+                        }`}
+                    >
+                        FEEDBACK
+                    </span>
                 </button>
                 <p className="text-gray-200 font-sans text-sm mt-4">Scrie-ne parerea ta</p>
             </div>

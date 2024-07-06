@@ -15,7 +15,7 @@ const FooterComponent = () => {
       <div className="main bg-[#EEF8F] relative flex flex-col">
         <footer className="w-full bg-gradient-to-r from-[#00052D] to-[#57033F] text-white p-10">
           <div className="row w-50 mx-auto flex flex-wrap items-start justify-between">
-            <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-32 mt-10">
+            <div className="flex-basis-25 p-4 sm:flex-basis-15 ml-10 mt-10">
               <img
                   className="w-20 mb-10"
                   src="https://www.edigitalagency.com.au/wp-content/uploads/Twitter-logo-png.png"
@@ -33,7 +33,7 @@ const FooterComponent = () => {
                 dolore.
               </p>
             </div>
-            <div className="contact flex-basis-25 p-4 mt-16 ml-[-100px]">
+            <div className="contact flex-basis-25 p-4 mt-16">
               <h3 className="mb-10 relative font-bold">
                 Contact Us
                 <div className="underline">
@@ -46,16 +46,14 @@ const FooterComponent = () => {
               <p className="email-id mt-4">popovicigrigore777@gmail.com</p>
               <h4 className="mt-4">+373 - 0123456789</h4>
             </div>
-            <div className="links flex-basis-25 p-4 ml-[-80px] mt-16">
-              <div className="align">
-                <h3 className="relative font-bold">
-                  Links
-                  <div className="underline">
-                    <span></span>
-                  </div>
-                </h3>
-              </div>
-              <ul className="mt-8">
+            <div className="links flex-basis-25 p-4 mt-16 ml-[-20px]">
+              <h3 className="relative font-bold">
+                Links
+                <div className="underline">
+                  <span></span>
+                </div>
+              </h3>
+              <ul className="mt-8 flex flex-col space-y-2">
                 <li>
                   <button onClick={() => handleCategoryCourseClick('/')}>
                     <a href="#" className="text-white">
@@ -92,37 +90,6 @@ const FooterComponent = () => {
                   </button>
                 </li>
               </ul>
-            </div>
-            <div className="leaveReview flex-basis-25 p-4 mr-40 mt-28">
-              <h3 className="relative ml-4 font-bold font-sans">
-                Leave a Review
-              </h3>
-              {submitted ? (
-                  <p className="text-gray-400 mt-4">Thank you for your review!</p>
-              ) : (
-                  <form className="flex items-center flex-col">
-                    <input
-                        type="email"
-                        placeholder="Enter your email id"
-                        className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none my-4 p-2"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <textarea
-                        placeholder="Enter your message"
-                        className="w-full bg-transparent text-gray-400 border-b-2 border-gray-300 outline-none p-2"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                    ></textarea>
-                    <button
-                        type="submit"
-                        className="bg-[#57033F] text-white py-2 px-4 mt-4 rounded hover:bg-[#45012B]"
-                    >
-                      Submit
-                    </button>
-                  </form>
-              )}
             </div>
           </div>
           <hr className="w-[1400px] border-0 border-b border-gray-300 mx-auto my-10" />
