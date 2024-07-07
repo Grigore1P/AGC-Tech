@@ -65,7 +65,8 @@ const RecenzieComponent = () => {
             setFeedback('');
             setRating(0);
             alert('Thank you for your feedback!');
-            navigate('/');
+            console.log('Navigating to home page');
+            navigate('/'); // Navigate to home page after successful submission
         } catch (error) {
             console.error('Error adding document: ', error);
         }
@@ -123,6 +124,7 @@ const RecenzieComponent = () => {
                     </div>
                     <div className='text-center'>
                         <button
+                            type="submit"
                             className={`w-32 h-12 text-white rounded-xl mt-[-10px] transition-all relative transform ${
                                 isHovered
                                     ? 'rotate-180 bg-gradient-to-r from-pink-500 to-pink-400'
@@ -131,17 +133,14 @@ const RecenzieComponent = () => {
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                         >
-          <span
-              className={`absolute inset-0 flex items-center justify-center transition-transform ${
-                  isHovered ? 'transform -rotate-180' : ''
-              }`}
-          >
-            Submit
-          </span>
+                            <span
+                                className={`absolute inset-0 flex items-center justify-center transition-transform ${
+                                    isHovered ? 'transform -rotate-180' : ''
+                                }`}
+                            >
+                                Submit
+                            </span>
                         </button>
-                        <br/>
-                        <br/>
-                        <br/>
                     </div>
                 </form>
             </div>
