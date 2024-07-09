@@ -62,6 +62,10 @@ module.exports = {
             'background-position': 'right center',
           },
         },
+        moving: {
+          '0%': { left: '-20px' },
+          '100%': { left: 'calc(100% - 20px)' },
+        },
       },
       animation: {
         animatetop: 'animatetop 0.5s ease-out',
@@ -72,6 +76,19 @@ module.exports = {
         'gradient-x': 'gradientX 15s ease infinite',
         'gradient-y': 'gradientY 15s ease infinite',
         'gradient-xy': 'gradientXY 15s ease infinite',
+        moving: 'moving 4s linear infinite',
+      },
+      colors: {
+        primary: {
+          DEFAULT: '#57033F',
+          light: '#EAD5E6',
+          lighter: '#F2BEFC',
+          lightest: '#F3E0EC',
+        },
+        highlight: {
+          DEFAULT: '#EE85B5',
+        },
+        customPink: '#ffc0eb', // Add this line
       },
     },
   },
