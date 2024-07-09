@@ -6,6 +6,7 @@
     "@firebase/analytics": "^0.10.4",
     "@firebase/auth": "^1.7.4",
     "@firebase/database": "^1.0.5",
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@headlessui/react": "^1.7.19",
     "@stripe/react-stripe-js": "^2.7.2",
     "@stripe/stripe-js": "^4.0.0",

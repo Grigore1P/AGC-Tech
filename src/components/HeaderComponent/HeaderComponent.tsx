@@ -66,7 +66,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
                 </Link>
             ))}
             {authUser && isLoggedIn && (
-                <div className="relative group" onMouseEnter={() => handleMouseEnter('welcome')} onMouseLeave={handleMouseLeave} style={{ zIndex: hoveredButton === 'welcome' ? 50 : 'auto' }}>
+                <div className="relative group mt-1" onMouseEnter={() => handleMouseEnter('welcome')} onMouseLeave={handleMouseLeave} style={{ zIndex: hoveredButton === 'welcome' ? 50 : 'auto' }}>
               <span className={`relative group px-3 py-1 text-lg text-white transition duration-300 ease-in-out transform hover:scale-105 rounded-lg cursor-pointer ${hoveredButton === 'welcome' ? 'backdrop-blur-none' : ''}`}>
                 <span className="relative z-10">Welcome, {authUser.displayName}</span>
                 <span className="absolute inset-0 rounded-lg group-hover:bg-gradient-to-r group-hover:from-[#EAD5E6] group-hover:via-[#F2BEFC] group-hover:to-[#F3E0EC] group-hover:bg-clip-text group-hover:text-transparent group-hover:shadow-[0_0_20px_10px_#EE85B5]"></span>
