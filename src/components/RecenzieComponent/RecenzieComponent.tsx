@@ -39,6 +39,12 @@ const RecenzieComponent = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!name || !feedback || rating === 0) {
+            alert('Please fill out all fields and provide a rating.');
+            return;
+        }
+
         try {
             const reviewsCollection = collection(db, 'reviews');
             const newReview = {
@@ -65,15 +71,14 @@ const RecenzieComponent = () => {
             setFeedback('');
             setRating(0);
             alert('Thank you for your feedback!');
-            console.log('Navigating to home page');
-            navigate('/'); // Navigate to home page after successful submission
+            navigate('/reviews'); // Navigate to reviews page after successful submission
         } catch (error) {
             console.error('Error adding document: ', error);
         }
     };
 
     return (
-        <div className='text-black p-10 relative w-screen bg-gradient-to-r from-black to-[#57033F] via-black animate-gradient-x min-h-screen flex items-center justify-center'>
+        <div className='text-black p-10 relative w-screen bg-gradient-to-r from-black to-[#57033F] via-black animate-gradient-x h-[1000px] flex items-center justify-center'>
             <ul className="circles absolute top-0 left-0 w-full h-[96%] overflow-hidden -z-1">
                 {circlesArray}
             </ul>
