@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import AGCLogoModel2 from "../HeaderComponent/AGCLogoModel2.png";
 
-const FooterComponent = () => {
-  const [email, setEmail] = useState('');
+const FooterComponent: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleCategoryCourseClick = (path) => {
+  // Define the type for the path parameter
+  const handleCategoryCourseClick = (path: string) => {
     navigate(path);
   };
 
-  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
-  const handleMouseEnter = (iconName) => {
+  // Define the type for the iconName parameter
+  const handleMouseEnter = (iconName: string) => {
     setHoveredIcon(iconName);
   };
 
@@ -27,8 +30,10 @@ const FooterComponent = () => {
             <div className="flex flex-col items-start">
               <div className="AGC ml-[70px]">
                 <h3 className="text-2xl font-bold mb-4 text-white">AGC Tech</h3>
+                <img src={AGCLogoModel2} alt="AGC Logo" className="w-24 h-24 ml-[120px] mt-[-75px]"/>
                 <div className="flex flex-col items-start lg:items-center mt-8 lg:mt-0 lg:ml-8">
-                  <p className="mb-4 ml-[-940px] text-pink-200">Intră pentru a primi cele mai recente anunțuri despre cursurile
+                  <p className="mb-4 ml-[-940px] text-pink-200">Intră pentru a primi cele mai recente anunțuri despre
+                    cursurile
                     noastre,<br/>
                     noutăți speciale și oferte exclusive!.</p>
                   <div className="">
@@ -40,7 +45,7 @@ const FooterComponent = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <button
-                        className="w-[150px] h-[43px] bg-[#ffc0eb] ml-[-53px] hover:bg-pink-400 text-[#00052D] font-semibold py-2 px-4 rounded-full transition duration-300">
+                        className="w-[150px] h-[43px] bg-[#ffc0eb] ml-[-53px] hover:bg-pink-300 text-[#00052D] font-bold font-semibold py-2 px-4 rounded-full transition duration-300">
                       Subscribe Now!
                     </button>
                   </div>
@@ -66,7 +71,8 @@ const FooterComponent = () => {
                           <a href="#" className="text-pink-200 hover:text-pink-500">
                             About Us
                           </a>
-                        </button> <br />
+                        </button>
+                        <br/>
                         <button onClick={() => handleCategoryCourseClick('/courses')}>
                           <a href="#" className="text-pink-200 hover:text-pink-500">
                             Courses

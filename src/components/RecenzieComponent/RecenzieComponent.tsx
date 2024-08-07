@@ -11,7 +11,12 @@ const RecenzieComponent = () => {
     const [hoverRating, setHoverRating] = useState(0);
     const navigate = useNavigate();
     const [isHovered, setIsHovered] = useState(false);
+    const [isHovered1, setIsHovered1] = useState(false);
     const [circlesArray, setCirclesArray] = useState<ReactNode[]>([]);
+
+    const handleButtonClick = () => {
+        navigate('/reviews');
+    };
 
     useEffect(() => {
         const circles = [...Array(15)].map((_, i) => {
@@ -61,11 +66,23 @@ const RecenzieComponent = () => {
             const querySnapshot = await getDocs(q);
             const reviews = querySnapshot.docs;
 
+            const localReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            localReviews.push(newReview);
+            if (localReviews.length > 3) {
+                localReviews.shift(); // Remove the oldest review
+            }
+            localStorage.setItem('reviews', JSON.stringify(localReviews));
+
             if (reviews.length > 3) {
                 const oldestReview = reviews[reviews.length - 1];
                 await deleteDoc(doc(db, 'reviews', oldestReview.id));
                 console.log('Deleted oldest review:', oldestReview.data());
             }
+
+            // Save the new review to local storage
+            const storedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            storedReviews.unshift(newReview);
+            localStorage.setItem('reviews', JSON.stringify(storedReviews));
 
             setName('');
             setFeedback('');
@@ -147,10 +164,25 @@ const RecenzieComponent = () => {
                             </span>
                         </button>
                     </div>
+
+                    <div className="gotoreview text-center">
+                        <button
+                            onClick={handleButtonClick}
+                            type="button" // Changed from "submit" to "button"
+                            className={`w-32 h-12 text-white rounded-xl mt-20 transition-all relative transform ${
+                                isHovered1
+                                    ? 'bg-gradient-to-r from-[#00052D] to-[#57033F]'
+                                    : ''
+                            } bg-gradient-to-l from-[#ffacc5] to-[#57033F]`}
+                            onMouseEnter={() => setIsHovered1(true)}
+                            onMouseLeave={() => setIsHovered1(false)}
+                        >
+                            Vezi Recenziile
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     );
-}
-
+};
 export default RecenzieComponent;

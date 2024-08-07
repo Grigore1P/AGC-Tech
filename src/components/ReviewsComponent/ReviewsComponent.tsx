@@ -1,6 +1,6 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase/firebaseConfig';
-import { collection, query, orderBy, onSnapshot, limit } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { AiFillStar } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,18 +19,24 @@ const ReviewsComponent = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
-        const q = query(
-            collection(db, 'reviews'),
-            orderBy('date', 'desc'),
-            limit(3)
-        );
+        // Load reviews from local storage
+        const storedReviews = localStorage.getItem('reviews');
+        if (storedReviews) {
+            setReviews(JSON.parse(storedReviews));
+        }
+
+        // Fetch reviews from Firebase
+        const q = query(collection(db, 'reviews'), orderBy('date', 'desc'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const reviewsArray: Review[] = [];
             querySnapshot.forEach((doc) => {
                 reviewsArray.push({ id: doc.id, ...doc.data() } as Review);
             });
+            // Save to local storage and update state
+            localStorage.setItem('reviews', JSON.stringify(reviewsArray));
             setReviews(reviewsArray);
         });
+
         return () => unsubscribe();
     }, []);
 
